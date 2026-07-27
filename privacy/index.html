@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AshGrid Privacy Policy — AshGrid</title>
+<meta name="description" content="What AshGrid collects, why, who receives it, how long it is kept, and the rights you have over it." />
+<meta name="theme-color" content="#0A0A0B" />
+<link rel="canonical" href="https://ashgrid.co/privacy" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="AshGrid Privacy Policy — AshGrid" />
+<meta property="og:description" content="What AshGrid collects, why, who receives it, how long it is kept, and the rights you have over it." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+/* Tokens mirror website/index.html so a policy page never looks like a different site. */
+:root{
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --f-serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --f-body:"Hanken Grotesk",system-ui,-apple-system,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SF Mono",monospace;
+  --gutter:clamp(20px,5vw,64px);
+}
+html[data-theme="dark"]{
+  --bg:#0A0A0B; --card:#101012; --card-2:#0C0C0E;
+  --t1:#F4F3F0; --t2:rgba(244,243,240,0.62); --t3:rgba(244,243,240,0.38);
+  --accent:#6FE3AE; --accent-dim:rgba(111,227,174,0.10); --accent-border:rgba(111,227,174,0.26);
+  --hairline:rgba(244,243,240,0.09); --hairline-strong:rgba(244,243,240,0.16);
+  --surface:rgba(244,243,240,0.04); --warn:#E0B341;
+  color-scheme:dark;
+}
+html[data-theme="light"]{
+  --bg:#DEDBD2; --card:#F7F5EF; --card-2:#FBFAF5;
+  --t1:#16140F; --t2:rgba(22,20,15,0.68); --t3:rgba(22,20,15,0.44);
+  --accent:#0E8F62; --accent-dim:rgba(14,143,98,0.09); --accent-border:rgba(14,143,98,0.26);
+  --hairline:rgba(22,20,15,0.12); --hairline-strong:rgba(22,20,15,0.20);
+  --surface:rgba(22,20,15,0.04); --warn:#B5841E;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--bg);color:var(--t1);font-family:var(--f-body);
+  font-size:16.5px;line-height:1.68;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+a:not(.plain){text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent-border)}
+a:not(.plain):hover{text-decoration-color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+.skip{position:absolute;left:-999px;background:var(--t1);color:var(--bg);padding:10px 16px;z-index:400;font-family:var(--f-mono);font-size:12px}
+.skip:focus{left:12px;top:12px}
+
+header{border-bottom:1px solid var(--hairline);position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  min-height:64px;padding:10px var(--gutter);max-width:1180px;margin:0 auto;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none!important}
+.brand svg{width:24px;height:24px}
+.brand span{font-family:var(--f-serif);font-size:23px;line-height:1}
+.doclinks{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.doclinks a{
+  font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--t2);padding:11px 12px;border-radius:8px;text-decoration:none!important;
+  min-height:44px;display:inline-flex;align-items:center;
+}
+.doclinks a:hover{color:var(--t1);background:var(--surface)}
+.doclinks a[aria-current="page"]{color:var(--accent);background:var(--accent-dim)}
+.tgl{width:40px;height:40px;border-radius:9px;border:1px solid var(--hairline-strong);
+  background:var(--surface);color:var(--t2);cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center}
+.tgl:hover{color:var(--t1)}
+.tgl svg{width:16px;height:16px}
+html[data-theme="dark"] .tgl .moon{display:none}
+html[data-theme="light"] .tgl .sun{display:none}
+
+.shell{max-width:1180px;margin:0 auto;padding:0 var(--gutter);
+  display:grid;grid-template-columns:minmax(0,1fr) 232px;gap:56px;align-items:start}
+@media(max-width:960px){.shell{grid-template-columns:minmax(0,1fr);gap:0}}
+
+main{padding:clamp(36px,6vw,64px) 0 96px;min-width:0}
+.title{font-family:var(--f-serif);font-weight:400;font-size:clamp(32px,5vw,52px);
+  line-height:1.06;letter-spacing:-0.01em;margin:14px 0 0}
+.kicker{font-family:var(--f-mono);font-size:10px;font-weight:500;text-transform:uppercase;
+  letter-spacing:0.2em;color:var(--t3);display:flex;align-items:center;gap:11px}
+.kicker .tick{width:20px;height:1px;background:var(--accent)}
+.dates{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:22px;padding-bottom:26px;
+  border-bottom:1px solid var(--hairline);font-family:var(--f-mono);font-size:11px;
+  letter-spacing:0.06em;text-transform:uppercase;color:var(--t3)}
+.dates b{color:var(--t1);font-weight:500}
+.summary{font-size:15px;color:var(--t2);margin:26px 0 0;padding:18px 20px;
+  border:1px solid var(--hairline);border-left:2px solid var(--accent);
+  border-radius:0 12px 12px 0;background:var(--card)}
+
+/* --- document body --- */
+.doc h2{font-family:var(--f-serif);font-weight:400;font-size:clamp(24px,3.4vw,33px);
+  line-height:1.18;letter-spacing:-0.005em;margin:56px 0 0;scroll-margin-top:84px}
+.doc h3{font-size:17px;font-weight:600;margin:34px 0 0;letter-spacing:-0.003em;scroll-margin-top:84px}
+.doc h4{font-family:var(--f-mono);font-size:12px;font-weight:500;text-transform:uppercase;
+  letter-spacing:0.12em;color:var(--t3);margin:26px 0 0}
+.doc p,.doc li{color:var(--t2)}
+.doc p{margin:16px 0 0;max-width:74ch}
+.doc strong{color:var(--t1);font-weight:600}
+.doc ul,.doc ol{margin:16px 0 0;padding-left:22px;max-width:74ch}
+.doc li{margin:9px 0}
+.doc li::marker{color:var(--t3)}
+.doc hr{border:none;border-top:1px solid var(--hairline);margin:52px 0 0}
+.doc code{font-family:var(--f-mono);font-size:0.87em;background:var(--surface);
+  border:1px solid var(--hairline);border-radius:5px;padding:1px 5px;color:var(--t1)}
+.doc blockquote{margin:24px 0 0;padding:16px 20px;border:1px solid var(--warn);
+  border-radius:12px;background:var(--surface)}
+.doc blockquote p{margin:0;max-width:none}
+.doc blockquote p + p{margin-top:12px}
+
+/* Tables carry real obligations (recipients, retention). They must never be clipped. */
+.tw{overflow-x:auto;margin:22px 0 0;border:1px solid var(--hairline);border-radius:12px;
+  -webkit-overflow-scrolling:touch}
+.doc table{border-collapse:collapse;width:100%;min-width:460px;font-size:14.5px}
+.doc th,.doc td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--hairline);
+  vertical-align:top;color:var(--t2)}
+.doc th{font-family:var(--f-mono);font-size:10px;font-weight:500;text-transform:uppercase;
+  letter-spacing:0.12em;color:var(--t3);background:var(--card);white-space:nowrap}
+.doc tbody tr:last-child td{border-bottom:none}
+.doc td strong{color:var(--t1)}
+
+/* --- table of contents --- */
+.toc{position:sticky;top:88px;padding:clamp(36px,6vw,64px) 0 0;font-size:13.5px}
+@media(max-width:960px){
+  .toc{position:static;padding:26px 0 0;margin-bottom:8px;
+    border:1px solid var(--hairline);border-radius:14px;padding:18px 20px}
+}
+.toc .h{font-family:var(--f-mono);font-size:10px;text-transform:uppercase;
+  letter-spacing:0.16em;color:var(--t3);margin-bottom:14px}
+.toc ul{list-style:none;margin:0;padding:0}
+.toc li{margin:0}
+.toc a{display:block;padding:7px 0;color:var(--t3);line-height:1.4;
+  text-decoration:none!important;border-left:1px solid var(--hairline);padding-left:14px}
+.toc a:hover{color:var(--t1);border-left-color:var(--accent)}
+
+footer{border-top:1px solid var(--hairline);padding:44px 0 56px;
+  max-width:1180px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+footer .dis{font-family:var(--f-serif);font-style:italic;font-size:15px;color:var(--t3);max-width:62ch;margin:0}
+footer .row{display:flex;flex-wrap:wrap;gap:12px 26px;justify-content:space-between;
+  align-items:center;margin-top:24px}
+footer .row a{font-size:13.5px;color:var(--t2)}
+footer .cp{font-family:var(--f-mono);font-size:9.5px;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--t3)}
+
+@media print{
+  header,.toc,.tgl{display:none}
+  body{background:#fff;color:#000;font-size:11pt}
+  .shell{display:block;max-width:none;padding:0}
+  .doc p,.doc li,.doc td{color:#000}
+  .doc h2{page-break-after:avoid}
+  .tw,.doc table{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#doc">Skip to the document</a>
+
+<header>
+  <nav class="nav">
+    <a class="brand plain" href="/" aria-label="AshGrid home">
+      <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <g stroke="var(--t3)" stroke-width="2" stroke-linecap="round">
+          <path d="M50 92 V48"/><path d="M50 62 L30 40"/><path d="M50 62 L70 40"/>
+          <path d="M50 55 L40 30"/><path d="M50 55 L60 30"/><path d="M50 48 L50 22"/>
+        </g>
+        <g fill="var(--accent)">
+          <circle cx="30" cy="40" r="3.4"/><circle cx="70" cy="40" r="3.4"/>
+          <circle cx="40" cy="30" r="3.4"/><circle cx="60" cy="30" r="3.4"/>
+          <circle cx="50" cy="22" r="4"/>
+        </g>
+      </svg>
+      <span>AshGrid</span>
+    </a>
+    <div class="doclinks">
+      <a href="/terms">Terms</a>
+      <a href="/privacy" aria-current="page">Privacy</a>
+      <a href="/consumer-health-data">Health data</a>
+      <button class="tgl" id="themeBtn" aria-label="Toggle color theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<div class="shell">
+  <main>
+    <span class="kicker"><span class="tick"></span>AshGrid · Privacy</span>
+    <h1 class="title">AshGrid Privacy Policy</h1>
+    <div class="dates">
+      <span>Effective <b>July 27, 2026</b></span>
+      <span>Last updated <b>July 27, 2026</b></span>
+    </div>
+    <p class="summary">What AshGrid collects, why, who receives it, how long it is kept, and the rights you have over it.</p>
+    <article class="doc" id="doc">
+      <p>AshGrid is operated by the Operator named below (&ldquo;AshGrid,&rdquo; &ldquo;we,&rdquo; &ldquo;us&rdquo;).
+      Questions: <strong>privacy@ashgrid.co</strong>.</p>
+      <h2 id="operator">Operator</h2>
+      <blockquote>
+      <p><strong>Interim notice.</strong> A formal legal entity for AshGrid is being organized. This table, and the effective date above, will be updated when formation completes. Until then, “we”, “us”, and “the Operator” refer to AshGrid’s founder, operating as a sole proprietorship.</p>
+      </blockquote>
+      <div class="tw"><table>
+      <thead>
+      <tr>
+      <th>Field</th>
+      <th>Value</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>Legal entity</td>
+      <td>AshGrid, operated by its founder as a sole proprietorship (formal entity being organized)</td>
+      </tr>
+      <tr>
+      <td>Entity type</td>
+      <td>Sole proprietorship — pre-incorporation</td>
+      </tr>
+      <tr>
+      <td>Registered address</td>
+      <td>Provided on request — write to privacy@ashgrid.co</td>
+      </tr>
+      </tbody>
+      </table></div>
+      <p>AshGrid is a <strong>personal wellness observation</strong> service. It is <strong>not</strong> a medical device,
+      diagnostic tool, pharmacy, clinician, or provider of medical advice, and we are not a
+      HIPAA covered entity or business associate. Results in AshGrid are personal observations
+      with stated uncertainty, not clinical findings.</p>
+      <p><strong>AshGrid is available only to adults (18+) residing in the United States.</strong></p>
+      <hr />
+      <h2 id="1-information-we-collect">1. Information we collect</h2>
+      <blockquote>
+      <p><strong>Notice at collection.</strong> California requires this summary at or before the point of
+      collection, so it is stated up front rather than only in the detail below. We collect
+      the categories in §1.1–1.3 — including <strong>health data, which is sensitive personal
+      information</strong> — for the purposes in §2. We use sensitive personal information only to
+      provide the service you asked for and for the purposes §2 lists; we do not use it to
+      infer characteristics about you. Retention is in §7. <strong>We do not sell or share personal
+      information</strong>, and we do not use it for cross-context behavioural advertising. Your
+      rights are in §8.</p>
+      </blockquote>
+      <h3 id="11-information-you-give-us">1.1 Information you give us</h3>
+      <div class="tw"><table>
+      <thead>
+      <tr>
+      <th>Category</th>
+      <th>Examples</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>Account</td>
+      <td>Email address; authentication identifiers from Apple or Google if you use them</td>
+      </tr>
+      <tr>
+      <td>Eligibility</td>
+      <td>Your attestation that you are 18+ and a US resident; your US state; date of birth (stored encrypted); age band</td>
+      </tr>
+      <tr>
+      <td>Profile</td>
+      <td>Sex at birth, timezone, goals, display and notification preferences</td>
+      </tr>
+      <tr>
+      <td>Observations</td>
+      <td>Experiments you run, protocols, amounts, timing, check-in responses, notes, symptoms, and outcomes you record</td>
+      </tr>
+      <tr>
+      <td>Community</td>
+      <td>Posts, notes, votes, and reports you choose to submit, published under a rotating pseudonym</td>
+      </tr>
+      <tr>
+      <td>Submissions</td>
+      <td>Interventions or protocols you suggest for the catalog</td>
+      </tr>
+      <tr>
+      <td>Consent</td>
+      <td>A durable, append-only record of every consent you give or withdraw, with timestamp and version</td>
+      </tr>
+      <tr>
+      <td>Support</td>
+      <td>Anything you send us directly</td>
+      </tr>
+      </tbody>
+      </table></div>
+      <h3 id="12-health-and-fitness-data-from-your-device">1.2 Health and fitness data from your device</h3>
+      <p>If — and only if — you grant permission, we read data from <strong>Apple Health (HealthKit)</strong>
+      or <strong>Android Health Connect</strong>, which may include: heart rate, heart rate variability,
+      sleep, steps, active and basal energy, walking distance, oxygen saturation, respiratory
+      rate, body temperature, body weight, and exercise and stand minutes.</p>
+      <p>We read only the metric types relevant to the experiments you are running. <strong>We never
+      write to HealthKit or Health Connect.</strong> You can revoke this permission at any time in
+      your device settings, and doing so stops all further reads immediately.</p>
+      <h3 id="13-information-collected-automatically">1.3 Information collected automatically</h3>
+      <p>Device and app version, IP address, coarse timing and diagnostic telemetry, error
+      reports, and request logs used for security, abuse prevention, and reliability.</p>
+      <h3 id="14-what-we-do-not-collect">1.4 What we do not collect</h3>
+      <p>We do not collect precise geolocation, contacts, photos, microphone, or camera data. We
+      do not use advertising identifiers, and we do not operate advertising on AshGrid.</p>
+      <hr />
+      <h2 id="2-how-we-use-information">2. How we use information</h2>
+      <p>We use information to:</p>
+      <ul>
+      <li>provide the service: run your experiments, compute your results, and show your history;</li>
+      <li>compute <strong>community evidence</strong> — aggregate, reliability-adjusted observations across
+        users, subject to a minimum-cohort floor (see §4);</li>
+      <li>generate written interpretations of your results, including via AI processing (§6);</li>
+      <li>send notifications you have enabled;</li>
+      <li>review, moderate, and standardize catalog submissions and community content;</li>
+      <li>secure the service, prevent abuse and fraud, and enforce our terms;</li>
+      <li><strong>improve, develop, and create new products, features, models, and research</strong>,
+        including by analyzing de-identified data (§4);</li>
+      <li>comply with law and respond to lawful requests.</li>
+      </ul>
+      <p><strong>Legal bases</strong> (where applicable): performing our contract with you; your consent for
+      health data, wearable access, and aggregate contribution; and our legitimate interests
+      in security, abuse prevention, and product improvement.</p>
+      <hr />
+      <h2 id="3-consent-and-how-it-works-here">3. Consent, and how it works here</h2>
+      <p>Consent in AshGrid is <strong>specific, layered, and independently revocable</strong>. Granting one
+      does not grant another:</p>
+      <ol>
+      <li><strong>Account and core service</strong> — required to use AshGrid.</li>
+      <li><strong>Device health data</strong> — optional; granted in the OS permission prompt; revocable in
+         device settings.</li>
+      <li><strong>Aggregate contribution</strong> — optional; a separate, neutrally-worded choice with no
+         pre-selected default, presented during setup as its own decision and revocable at any
+         time in Profile.</li>
+      <li><strong>Public posting</strong> — optional and per-post; nothing you write is public unless you
+         post it.</li>
+      </ol>
+      <p>Every grant and withdrawal is written to an append-only consent record. Withdrawal takes
+      effect going forward; it does not retroactively un-publish aggregates that were already
+      computed and released (see §4.3).</p>
+      <hr />
+      <h2 id="4-de-identified-and-aggregate-data">4. De-identified and aggregate data</h2>
+      <p>This section describes the core of AshGrid&rsquo;s research output and our commercial
+      interest in it. Please read it.</p>
+      <h3 id="41-what-we-create">4.1 What we create</h3>
+      <p>If you turn on aggregate contribution, we transform your completed results into
+      <strong>de-identified research records</strong>. Before this happens we strip direct identifiers and
+      replace your account with a rotating analytical key that is not linkable back to you by
+      recipients. From those records we compute cohort statistics and combination
+      (&ldquo;interaction&rdquo;) statistics.</p>
+      <h3 id="42-the-minimum-cohort-floor">4.2 The minimum-cohort floor</h3>
+      <p>We do not publish a community statistic unless <strong>at least 30 unique people</strong> are present
+      in every compared group, along with statistical and practical-effect thresholds. Below
+      that floor, the app shows that evidence is still forming rather than showing a number.
+      We do not subdivide by dose or demographics at that floor.</p>
+      <h3 id="43-our-rights-in-de-identified-and-aggregate-data">4.3 Our rights in de-identified and aggregate data</h3>
+      <p><strong>You grant us a perpetual, irrevocable, worldwide, royalty-free, sublicensable license
+      to use, reproduce, modify, publish, and create derivative works from de-identified and
+      aggregated data derived from your contributed observations</strong>, for any lawful purpose,
+      including research, publications, evidence products, benchmarking, model development,
+      and commercial offerings.</p>
+      <p>Because this data is de-identified and non-linkable, it is no longer personal
+      information, and it <strong>survives deletion of your account</strong> (§8.3). Deleting your account
+      removes your identifiable data; it does not retract aggregate statistics that already
+      incorporate your de-identified contribution.</p>
+      <h3 id="44-what-we-will-never-do-with-your-health-data">4.4 What we will never do with your health data</h3>
+      <ul>
+      <li>We do <strong>not sell</strong> your personal information or your health data.</li>
+      <li>We do <strong>not</strong> sell, license, or transfer <strong>raw wearable data</strong> — ever, in any form.</li>
+      <li>We do <strong>not</strong> use health data for advertising or marketing, and we do not share it with
+        data brokers.</li>
+      <li>We do <strong>not</strong> use your identifiable health data to train third-party AI models, and our
+        AI providers operate under zero-retention, no-training terms (§6).</li>
+      </ul>
+      <p>These limits also reflect binding obligations to Apple and Google as a condition of
+      HealthKit and Health Connect access.</p>
+      <hr />
+      <h2 id="5-when-we-share-information">5. When we share information</h2>
+      <div class="tw"><table>
+      <thead>
+      <tr>
+      <th>Recipient</th>
+      <th>What</th>
+      <th>Why</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><strong>Supabase</strong></td>
+      <td>Account, profile, observations (encrypted in transit and at rest)</td>
+      <td>Database and authentication hosting, United States</td>
+      </tr>
+      <tr>
+      <td><strong>Google Cloud (Cloud Run, United States)</strong></td>
+      <td>Application traffic</td>
+      <td>Running the API</td>
+      </tr>
+      <tr>
+      <td><strong>Anthropic</strong></td>
+      <td>Minimal, non-identifying content for text generation</td>
+      <td>AI features, under zero-retention and no-training terms</td>
+      </tr>
+      <tr>
+      <td><strong>Sentry</strong></td>
+      <td>Diagnostics and error reports, scrubbed of health content</td>
+      <td>Reliability</td>
+      </tr>
+      <tr>
+      <td><strong>Apple / Google</strong></td>
+      <td>Authentication identifiers only</td>
+      <td>Sign-in you chose</td>
+      </tr>
+      </tbody>
+      </table></div>
+      <p>We may also disclose information when required by law or valid legal process; to protect
+      the rights, safety, or property of AshGrid, our users, or the public; and in a merger,
+      acquisition, financing, or sale of assets, in which case your information may transfer to
+      the successor, subject to this policy or a materially similar one.</p>
+      <p><strong>We do not sell personal information, and we do not share it for cross-context
+      behavioral advertising.</strong></p>
+      <hr />
+      <h2 id="6-ai-processing">6. AI processing</h2>
+      <p>Some features generate written summaries of your own results. When they do, we send the
+      <strong>minimum necessary</strong> content to our AI provider under contractual terms requiring
+      <strong>zero retention</strong> and <strong>no training</strong> on your data. AI-generated text is automatically
+      re-checked against a language filter before it is stored or shown, so that output is
+      phrased as personal observation and not as medical claim, diagnosis, or treatment advice.</p>
+      <p><strong>AI never determines safety, calculates official statistics, or recommends restricted
+      substances.</strong> Statistical results are computed deterministically, not by a language model.</p>
+      <hr />
+      <h2 id="7-retention">7. Retention</h2>
+      <p>California&rsquo;s CPRA requires a retention period, or the criteria used to set one, for
+      <strong>each</strong> category we collect — not a general statement. This table covers every category
+      listed in §1.</p>
+      <div class="tw"><table>
+      <thead>
+      <tr>
+      <th>Category (§1)</th>
+      <th>Retention period or criteria</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>Account (email, sign-in identifiers)</td>
+      <td>While the account is active; deleted within <strong>30 days</strong> of a deletion request</td>
+      </tr>
+      <tr>
+      <td>Eligibility (age, US residency, state, DOB)</td>
+      <td>While the account is active, then <strong>12 months</strong>, because it evidences that we lawfully served an adult US resident</td>
+      </tr>
+      <tr>
+      <td>Profile (sex at birth, timezone, goals, preferences)</td>
+      <td>While the account is active; deleted with the account</td>
+      </tr>
+      <tr>
+      <td>Observations (experiments, check-ins, notes, results)</td>
+      <td>While the account is active; deleted with the account</td>
+      </tr>
+      <tr>
+      <td>Community content (posts, notes, votes, reports)</td>
+      <td>Until you delete the item, or with the account</td>
+      </tr>
+      <tr>
+      <td>Submissions (catalog suggestions)</td>
+      <td>While the account is active. A submission <strong>accepted into the catalog</strong> stays as catalog content, without your identifiers</td>
+      </tr>
+      <tr>
+      <td>Consent records</td>
+      <td><strong>6 years</strong> after the consent ends — these are the evidence that consent was given, so they must outlive the data they authorised</td>
+      </tr>
+      <tr>
+      <td>Support correspondence</td>
+      <td><strong>24 months</strong> from the last message</td>
+      </tr>
+      <tr>
+      <td>Device and diagnostic logs, IP address</td>
+      <td><strong>30 days</strong>, then deleted or aggregated</td>
+      </tr>
+      <tr>
+      <td>Wearable ingest cache</td>
+      <td><strong>2 days</strong>, then hard-deleted</td>
+      </tr>
+      <tr>
+      <td>Data export files</td>
+      <td><strong>3 days</strong>, then deleted</td>
+      </tr>
+      <tr>
+      <td>Content sent to AI providers</td>
+      <td><strong>Zero retention</strong> by the provider</td>
+      </tr>
+      <tr>
+      <td>De-identified aggregates</td>
+      <td>Indefinitely — no longer personal information (§4.3)</td>
+      </tr>
+      </tbody>
+      </table></div>
+      <p>Where a period is longer than the account&rsquo;s life, it is because the record evidences a
+      legal obligation we must be able to demonstrate, or because it is no longer linkable to
+      you. We do not keep personal information &ldquo;just in case&rdquo;.</p>
+      <hr />
+      <h2 id="8-your-rights-and-choices">8. Your rights and choices</h2>
+      <h3 id="81-rights">8.1 Rights</h3>
+      <p>Depending on your state, you may have the right to know, access, correct, delete,
+      obtain a portable copy, opt out of sale or targeted advertising (we do neither), limit
+      use of sensitive information, and not be discriminated against for exercising a right.</p>
+      <p><strong>Residents of Washington and Nevada:</strong> see the separate
+      <a href="/consumer-health-data">Consumer Health Data Privacy Policy</a>, which governs consumer
+      health data and provides additional rights, including the right to withdraw consent and
+      to have consumer health data deleted.</p>
+      <p><strong>California (CCPA/CPRA).</strong> We collect the categories in §1, use them for the purposes
+      in §2, and disclose them to the recipients in §5. <strong>We do not sell or share personal
+      information</strong> as the CCPA/CPRA defines those terms, and we have not in the preceding 12
+      months. Health data is <strong>sensitive personal information</strong>; we use it only to provide the
+      service you requested and for the purposes §2 lists, which do not include inferring
+      characteristics about you — so the &ldquo;limit the use of my sensitive personal information&rdquo;
+      right has nothing to restrict. You may also designate an authorised agent to make a
+      request on your behalf.</p>
+      <p><strong>Comprehensive state privacy laws.</strong> If you live in a state with a comprehensive
+      consumer privacy law — including <strong>Virginia, Colorado, Connecticut, Utah, Texas, Oregon,
+      Montana, Delaware, Iowa, Nebraska, New Hampshire, New Jersey, Minnesota, Maryland,
+      Tennessee, Indiana, Kentucky, Rhode Island,</strong> and others as they take effect — you have
+      the rights listed above, and, where that state provides it, the right to appeal a denial
+      (§8.2) and to contact your Attorney General if the appeal is refused.</p>
+      <p>Several of those laws treat health data as <strong>sensitive data requiring opt-in consent</strong>.
+      AshGrid is built that way already: device health access is an OS-level opt-in, and
+      aggregate contribution is a separate choice with no pre-selected default (§3).</p>
+      <p><strong>We do not process personal data for targeted advertising, sale, or profiling in
+      furtherance of decisions producing legal or similarly significant effects</strong> (§10), so
+      the opt-outs those laws provide have nothing to apply to.</p>
+      <h3 id="82-exercising-them">8.2 Exercising them</h3>
+      <ul>
+      <li><strong>Access / portability</strong> — Profile → <strong>Export my data</strong>, which produces a complete
+        structured JSON copy immediately, at no cost.</li>
+      <li><strong>Correction</strong> — edit in the app; observations are append-only, so corrections are
+        recorded as new entries referencing the prior one rather than overwriting history.</li>
+      <li><strong>Withdraw contribution</strong> — Profile → data contribution.</li>
+      <li><strong>Deletion</strong> — Profile → delete account, or email <strong>privacy@ashgrid.co</strong>.</li>
+      <li><strong>Appeal</strong> — if we deny a request, reply to our decision and we will re-review and
+        respond in writing.</li>
+      </ul>
+      <p>We respond within <strong>45 days</strong>, extendable once by 45 days where permitted, and we do not
+      charge for these requests.</p>
+      <h3 id="83-what-deletion-does">8.3 What deletion does</h3>
+      <p>Deleting your account removes your identifiable data: profile, observations, check-ins,
+      results, wearable connections, and community content authored under your pseudonyms.</p>
+      <p>It does <strong>not</strong> remove de-identified aggregate statistics that already incorporate your
+      contribution, because those are no longer linkable to you and removing one contribution
+      would not be possible without re-identifying it. This is disclosed here, and again at the
+      point of deletion.</p>
+      <hr />
+      <h2 id="9-security">9. Security</h2>
+      <p>RLS on every table so a user&rsquo;s rows are unreachable by other users; encryption in transit
+      (TLS) and at rest; sensitive identifiers such as date of birth encrypted at the column
+      level; authentication tokens stored in the device secure enclave (Keychain / Keystore),
+      never in general app storage; privileged keys held server-side only; append-only audit
+      records for administrative action; and least-privilege administrative access.</p>
+      <p><strong>Breach notification.</strong> No system is perfectly secure. If a breach affects your
+      personal information we will notify you without unreasonable delay and, where required,
+      within the timeframe your state&rsquo;s breach-notification law sets, and we will notify
+      regulators and any other parties the law requires. The notice will describe what
+      happened, the categories of information involved, what we have done, and what you can do.</p>
+      <p><strong>Data minimisation.</strong> We collect what a feature needs and no more. Wearable reads are
+      limited to the metric types your active experiments use; content sent to AI providers is
+      reduced to the minimum necessary; and diagnostics are scrubbed of health content before
+      they leave the service.</p>
+      <hr />
+      <h2 id="10-automated-processing">10. Automated processing</h2>
+      <p>AshGrid computes your results <strong>deterministically</strong> — the statistics, effect estimates,
+      reliability score, and outcome verdict are produced by fixed, versioned code, not by a
+      language model. AI is used only to write the plain-language explanation of a result that
+      has already been computed, and that text is re-checked against a language filter before
+      you see it (§6).</p>
+      <p>We do <strong>not</strong> use automated processing to make decisions that produce legal or similarly
+      significant effects about you. Nothing in AshGrid determines eligibility for credit,
+      insurance, employment, housing, or healthcare, and no output is a diagnosis or a
+      treatment decision.</p>
+      <h2 id="11-do-not-track-and-global-privacy-control">11. Do Not Track and Global Privacy Control</h2>
+      <p>We do not track you across other companies&rsquo; apps or websites, and we do not serve
+      targeted advertising, so there is nothing for a cross-site signal to opt you out of. We
+      honour Global Privacy Control signals where they reach us and where law requires it.</p>
+      <h2 id="12-children">12. Children</h2>
+      <p>AshGrid is for adults <strong>18 and over</strong>. We do not knowingly collect information from
+      anyone under 18. If we learn we have, we will delete it. Eligibility is enforced in the
+      product, not only stated here.</p>
+      <hr />
+      <h2 id="13-united-states-only">13. United States only</h2>
+      <p>AshGrid is offered only in the United States and its data is processed in the United
+      States. We do not offer the service to, or knowingly collect information from, people
+      outside the US.</p>
+      <hr />
+      <h2 id="14-changes">14. Changes</h2>
+      <p>We will post any change here with a new &ldquo;Last updated&rdquo; date. For <strong>material</strong> changes to
+      how we use health data or de-identified contributions, we will give notice in the app and
+      — where the law requires it — obtain your consent again before the change applies to you.</p>
+      <hr />
+      <h2 id="15-contact">15. Contact</h2>
+      <p>The Operator named at the top of this document.
+      <strong>privacy@ashgrid.co</strong></p>
+    </article>
+  </main>
+  <aside class="toc" aria-label="On this page">
+    <div class="h">On this page</div>
+    <ul>
+    <li><a href="#operator">Operator</a></li>
+    <li><a href="#1-information-we-collect">1. Information we collect</a></li>
+    <li><a href="#2-how-we-use-information">2. How we use information</a></li>
+    <li><a href="#3-consent-and-how-it-works-here">3. Consent, and how it works here</a></li>
+    <li><a href="#4-de-identified-and-aggregate-data">4. De-identified and aggregate data</a></li>
+    <li><a href="#5-when-we-share-information">5. When we share information</a></li>
+    <li><a href="#6-ai-processing">6. AI processing</a></li>
+    <li><a href="#7-retention">7. Retention</a></li>
+    <li><a href="#8-your-rights-and-choices">8. Your rights and choices</a></li>
+    <li><a href="#9-security">9. Security</a></li>
+    <li><a href="#10-automated-processing">10. Automated processing</a></li>
+    <li><a href="#11-do-not-track-and-global-privacy-control">11. Do Not Track and Global Privacy Control</a></li>
+    <li><a href="#12-children">12. Children</a></li>
+    <li><a href="#13-united-states-only">13. United States only</a></li>
+    <li><a href="#14-changes">14. Changes</a></li>
+    <li><a href="#15-contact">15. Contact</a></li>
+    </ul>
+  </aside>
+</div>
+
+<footer>
+  <p class="dis">AshGrid records personal observations, never medical claims. It is not
+  diagnostic, prescribing, or medical-device software. US residents, 18+. If something
+  feels like an emergency, contact your local emergency services.</p>
+  <div class="row">
+    <span><a href="/">Back to AshGrid</a></span>
+    <span class="cp">© 2026 AshGrid</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  // Shares the 'ag-theme' key with the landing page, so the choice survives the jump.
+  var root = document.documentElement, saved = null;
+  try { saved = localStorage.getItem('ag-theme'); } catch(e){}
+  if (saved) root.setAttribute('data-theme', saved);
+  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches)
+    root.setAttribute('data-theme','light');
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('ag-theme', next); } catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
