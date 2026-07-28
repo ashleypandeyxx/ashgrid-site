@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Delete your account — AshGrid</title>
+<meta name="description" content="How to delete your AshGrid account and data — in the app or by email. What is deleted, what is retained, and on what timeline." />
+<meta name="theme-color" content="#0A0A0B" />
+<link rel="canonical" href="https://ashgrid.co/delete-account" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Delete your account — AshGrid" />
+<meta property="og:description" content="How to delete your AshGrid account and data — in the app or by email." />
+<link rel="icon" type="image/png" href="/favicon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+/* Tokens mirror website/index.html so this page never looks like a different site. */
+:root{
+  --f-serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --f-body:"Hanken Grotesk",system-ui,-apple-system,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SF Mono",monospace;
+  --gutter:clamp(20px,5vw,64px);
+}
+html[data-theme="dark"]{
+  --bg:#0A0A0B; --card:#101012;
+  --t1:#F4F3F0; --t2:rgba(244,243,240,0.62); --t3:rgba(244,243,240,0.38);
+  --accent:#6FE3AE; --accent-dim:rgba(111,227,174,0.10); --accent-border:rgba(111,227,174,0.26);
+  --hairline:rgba(244,243,240,0.09); --hairline-strong:rgba(244,243,240,0.16);
+  --surface:rgba(244,243,240,0.04); --warn:#E0B341;
+  color-scheme:dark;
+}
+html[data-theme="light"]{
+  --bg:#DEDBD2; --card:#F7F5EF;
+  --t1:#16140F; --t2:rgba(22,20,15,0.68); --t3:rgba(22,20,15,0.44);
+  --accent:#0E8F62; --accent-dim:rgba(14,143,98,0.09); --accent-border:rgba(14,143,98,0.26);
+  --hairline:rgba(22,20,15,0.12); --hairline-strong:rgba(22,20,15,0.20);
+  --surface:rgba(22,20,15,0.04); --warn:#B5841E;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--t1);font-family:var(--f-body);
+  font-size:16.5px;line-height:1.68;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent-border)}
+a:hover{text-decoration-color:var(--accent)}
+a.plain{text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+
+header{border-bottom:1px solid var(--hairline)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  min-height:64px;padding:10px var(--gutter);max-width:820px;margin:0 auto}
+.brand{font-family:var(--f-serif);font-size:23px;text-decoration:none}
+.navlink{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--t2);text-decoration:none;min-height:44px;display:inline-flex;align-items:center;padding:0 12px}
+.navlink:hover{color:var(--t1)}
+
+main{max-width:820px;margin:0 auto;padding:clamp(36px,6vw,64px) var(--gutter) 96px}
+h1{font-family:var(--f-serif);font-weight:400;font-size:clamp(32px,5vw,48px);line-height:1.12;margin:0 0 10px}
+.kicker{font-family:var(--f-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--t3);margin:0 0 18px}
+h2{font-family:var(--f-body);font-weight:600;font-size:19px;margin:44px 0 10px}
+p{margin:0 0 14px;color:var(--t2)}
+strong{color:var(--t1);font-weight:600}
+ol,ul{margin:0 0 14px;padding-left:22px;color:var(--t2)}
+li{margin-bottom:8px}
+li::marker{font-family:var(--f-mono);color:var(--t3)}
+
+.card{background:var(--card);border:1px solid var(--hairline);border-radius:16px;
+  padding:22px 24px;margin:26px 0}
+.card h2{margin-top:0}
+.note{border-left:3px solid var(--accent-border);background:var(--accent-dim);
+  border-radius:0 12px 12px 0;padding:14px 18px;margin:26px 0}
+.note p{margin:0;color:var(--t2)}
+code{font-family:var(--f-mono);font-size:0.86em;background:var(--surface);
+  border:1px solid var(--hairline);border-radius:6px;padding:2px 6px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px}
+th{font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--t3);text-align:left;padding:8px 12px 8px 0;border-bottom:1px solid var(--hairline-strong)}
+td{padding:10px 12px 10px 0;border-bottom:1px solid var(--hairline);color:var(--t2);vertical-align:top}
+td:first-child{color:var(--t1)}
+
+footer{border-top:1px solid var(--hairline);padding:28px var(--gutter);max-width:820px;margin:0 auto}
+footer p{font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.06em;color:var(--t3)}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav" aria-label="Site">
+    <a class="brand plain" href="/">Ash<span style="opacity:.45">Grid</span></a>
+    <a class="navlink" href="/privacy">Privacy policy</a>
+  </nav>
+</header>
+
+<main>
+  <p class="kicker">Account &amp; data deletion</p>
+  <h1>Delete your account.</h1>
+  <p>You can delete your AshGrid account and the data associated with it at any time.
+  Deletion is available directly in the app, and by email if you no longer have the app
+  installed. You do not need to give a reason either way.</p>
+
+  <div class="card">
+    <h2>In the app — immediate</h2>
+    <ol>
+      <li>Open AshGrid and go to the <strong>Profile</strong> tab.</li>
+      <li>Scroll to the bottom and tap <strong>Request account deletion</strong>.</li>
+      <li>Type <code>DELETE</code> to confirm. The typed confirmation exists because
+          this is irreversible.</li>
+    </ol>
+    <p>The request takes effect immediately: your account stops working and deletion of
+    stored data begins.</p>
+  </div>
+
+  <div class="card">
+    <h2>By email — if you no longer have the app</h2>
+    <p>Write to <a href="mailto:privacy@ashgrid.co">privacy@ashgrid.co</a> from the email
+    address on the account, with the subject line <strong>Delete my account</strong>.
+    We verify the request against the account email and confirm when deletion is
+    complete. No account credentials are ever requested by email.</p>
+  </div>
+
+  <h2>What is deleted, and when</h2>
+  <p>Within <strong>30 days</strong> of a deletion request, we delete your account
+  credentials, profile, observations (experiments, check-ins, notes, results), community
+  content, wearable data, and support correspondence. The full per-category schedule is
+  in <a href="/privacy">the privacy policy, §7–8</a>. A small number of records are
+  retained longer because the law requires us to be able to demonstrate them:</p>
+
+  <table>
+    <tr><th>Retained</th><th>How long</th><th>Why</th></tr>
+    <tr>
+      <td>Consent records</td>
+      <td>6 years after the consent ends</td>
+      <td>They are the evidence that consent was given, so they must outlive the data
+          they authorised</td>
+    </tr>
+    <tr>
+      <td>Eligibility attestation (18+, US residency)</td>
+      <td>12 months</td>
+      <td>Evidence that we lawfully served an adult US resident</td>
+    </tr>
+    <tr>
+      <td>De-identified aggregates</td>
+      <td>Indefinitely</td>
+      <td>No longer linkable to you — they contain no identifiers and are governed by a
+          minimum-cohort floor</td>
+    </tr>
+  </table>
+
+  <div class="note">
+    <p><strong>Deletion is permanent.</strong> There is no recovery window and no
+    "undelete". If you want a copy of your data first, use <strong>Export my
+    data</strong> on the Profile tab before deleting — the export hands you a complete
+    JSON file of everything the account holds.</p>
+  </div>
+
+  <h2>Questions</h2>
+  <p>Anything about deletion, retention, or your other privacy rights:
+  <a href="mailto:privacy@ashgrid.co">privacy@ashgrid.co</a>. The full statement of your
+  rights is in <a href="/privacy">the privacy policy</a> and, for health data
+  specifically, <a href="/consumer-health-data">the consumer health data policy</a>.</p>
+</main>
+
+<footer>
+  <p>AshGrid records personal observations, never medical claims. US residents, 18+.
+  © 2026 AshGrid</p>
+</footer>
+
+</body>
+</html>
