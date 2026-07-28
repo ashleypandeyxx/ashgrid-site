@@ -3,826 +3,340 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AshGrid — Run the experiment on yourself</title>
-<meta name="description" content="AshGrid is a personal wellness observation platform. Record a starting snapshot, run a structured protocol, and see your reported change against that snapshot — with the method and provenance always in view. Reliability-adjusted community observations, never medical claims. US public beta, adults 18+." />
+<title>AshGrid — an open experiment in what actually works</title>
+<meta name="description" content="A decentralized wellness experiment. Thousands of people each testing one thing at a time, pooling what they find — private by default, and nothing published until enough people have run it. US beta, adults 18+." />
 <meta name="theme-color" content="#0A0A0B" />
 <link rel="canonical" href="https://ashgrid.co/" />
 
 <meta property="og:type" content="website" />
-<meta property="og:title" content="AshGrid — Run the experiment on yourself" />
-<meta property="og:description" content="Record a starting snapshot. Run a structured protocol. See your change — with the method in view. US public beta, adults 18+." />
+<meta property="og:title" content="AshGrid — an open experiment in what actually works" />
+<meta property="og:description" content="A decentralized wellness experiment. Private by default. Nothing published until enough people have run it." />
 <meta name="twitter:card" content="summary_large_image" />
 
 <link rel="icon" type="image/png" href="/favicon.png" />
-<link rel="apple-touch-icon" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/logo-mark.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <style>
 /* ============================================================= *
- *  AshGrid — landing site
- *  Emulates the app's design language:
- *  "a precision scientific instrument that is quietly alive."
+ *  ashgrid.co
+ *
+ *  Headings are set in Hanken Grotesk, not the display serif. A big
+ *  serif headline split across two tones is the house style of every
+ *  generated landing page; the serif here is reserved for the wordmark
+ *  and for a finding, which is what the design system actually asks of
+ *  it. Headings are fragments, not sentences with full stops.
  * ============================================================= */
 
 :root{
   --ease:cubic-bezier(0.16,1,0.3,1);
-  --ease-soft:cubic-bezier(0.45,0,0.15,1);
-  --maxw:1180px;
-  --gutter:clamp(20px,5vw,64px);
-
+  --maxw:1080px;
+  --gutter:clamp(22px,5vw,56px);
   --f-serif:"Instrument Serif",Georgia,"Times New Roman",serif;
   --f-body:"Hanken Grotesk",system-ui,-apple-system,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"SF Mono",monospace;
 }
-
-/* ---- Dark theme (default) — exact app tokens ---- */
 html[data-theme="dark"]{
-  --bg:#0A0A0B;
-  --card:#101012;
-  --card-2:#0C0C0E;
-  --t1:#F4F3F0;
-  --t2:rgba(244,243,240,0.58);
-  --t3:rgba(244,243,240,0.34);
-  --t4:rgba(244,243,240,0.16);
-  --accent:#6FE3AE;
-  --accent-deep:#3FB888;
-  --accent-dim:rgba(111,227,174,0.10);
-  --accent-border:rgba(111,227,174,0.26);
-  --hairline:rgba(244,243,240,0.09);
-  --hairline-strong:rgba(244,243,240,0.16);
-  --hover:rgba(244,243,240,0.028);
-  --surface:rgba(244,243,240,0.04);
-  --btn-bg:#F4F3F0;
-  --btn-fg:#0A0A0B;
-  --tip-bg:#1C1C1F;
-  --warn:#E0B341;
-  --danger:#E06A5C;
-  --glow:radial-gradient(60% 60% at 50% 40%,rgba(111,227,174,0.16),transparent 70%);
+  --bg:#0A0A0B; --card:#101012;
+  --t1:#F4F3F0; --t2:rgba(244,243,240,0.60); --t3:rgba(244,243,240,0.36); --t4:rgba(244,243,240,0.17);
+  --accent:#6FE3AE; --accent-dim:rgba(111,227,174,0.10); --accent-border:rgba(111,227,174,0.26);
+  --hairline:rgba(244,243,240,0.09); --hairline-strong:rgba(244,243,240,0.17);
+  --surface:rgba(244,243,240,0.035);
+  --btn-bg:#F4F3F0; --btn-fg:#0A0A0B;
   color-scheme:dark;
 }
-/* ---- Light theme — warm paper ---- */
 html[data-theme="light"]{
-  --bg:#DEDBD2;
-  --card:#F7F5EF;
-  --card-2:#FBFAF5;
-  --t1:#16140F;
-  --t2:rgba(22,20,15,0.62);
-  --t3:rgba(22,20,15,0.40);
-  --t4:rgba(22,20,15,0.16);
-  --accent:#0E8F62;
-  --accent-deep:#0B7350;
-  --accent-dim:rgba(14,143,98,0.09);
-  --accent-border:rgba(14,143,98,0.26);
-  --hairline:rgba(22,20,15,0.12);
-  --hairline-strong:rgba(22,20,15,0.20);
-  --hover:rgba(22,20,15,0.022);
-  --surface:rgba(22,20,15,0.04);
-  --btn-bg:#16140F;
-  --btn-fg:#F7F5EF;
-  --tip-bg:#16140F;
-  --warn:#B5841E;
-  --danger:#C0503F;
-  --glow:radial-gradient(60% 60% at 50% 40%,rgba(14,143,98,0.12),transparent 70%);
+  --bg:#DEDBD2; --card:#F7F5EF;
+  --t1:#16140F; --t2:rgba(22,20,15,0.64); --t3:rgba(22,20,15,0.42); --t4:rgba(22,20,15,0.18);
+  --accent:#0E8F62; --accent-dim:rgba(14,143,98,0.09); --accent-border:rgba(14,143,98,0.26);
+  --hairline:rgba(22,20,15,0.12); --hairline-strong:rgba(22,20,15,0.20);
+  --surface:rgba(22,20,15,0.035);
+  --btn-bg:#16140F; --btn-fg:#F7F5EF;
   color-scheme:light;
 }
 
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-
 body{
-  margin:0;
-  background:var(--bg);
-  color:var(--t1);
-  font-family:var(--f-body);
-  font-size:16px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-  overflow-x:hidden;
-  transition:background .7s var(--ease-soft),color .7s var(--ease-soft);
+  margin:0;background:var(--bg);color:var(--t1);font-family:var(--f-body);
+  font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;overflow-x:hidden;
+  transition:background .5s var(--ease),color .5s var(--ease);
 }
-
 a{color:inherit;text-decoration:none}
 img,svg{display:block;max-width:100%}
 ::selection{background:var(--accent);color:var(--bg)}
-:focus-visible{outline:1.5px solid var(--accent);outline-offset:3px;border-radius:3px}
-.skip{position:absolute;left:-999px;top:0;background:var(--t1);color:var(--bg);padding:10px 16px;z-index:400;font-family:var(--f-mono);font-size:12px}
+:focus-visible{outline:1.5px solid var(--accent);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-9999px;background:var(--t1);color:var(--bg);padding:10px 16px;z-index:400;font-family:var(--f-mono);font-size:12px}
 .skip:focus{left:12px;top:12px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-/* ---- text roles (from the design system) ---- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
 .mono{font-family:var(--f-mono);letter-spacing:0.02em}
-.num{font-variant-numeric:tabular-nums;letter-spacing:-0.01em}
-.serif{font-family:var(--f-serif)}
-.accent{color:var(--accent)}
-.t2{color:var(--t2)}
-.t3{color:var(--t3)}
 
-.kicker{
-  font-family:var(--f-mono);font-size:10px;font-weight:500;text-transform:uppercase;
-  letter-spacing:0.2em;color:var(--t3);display:inline-flex;align-items:center;gap:11px;
-}
-.kicker .tick{display:inline-block;width:20px;height:1px;background:var(--accent);opacity:.8}
 .label{
-  font-family:var(--f-mono);font-size:9px;font-weight:400;text-transform:uppercase;
-  letter-spacing:0.18em;color:var(--t3);
+  font-family:var(--f-mono);font-size:10px;font-weight:500;text-transform:uppercase;
+  letter-spacing:0.19em;color:var(--t3);
 }
-
-/* provenance tag / pill */
-.tag{
-  font-family:var(--f-mono);font-size:8.5px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;
-  color:var(--t3);border:1px solid var(--hairline-strong);border-radius:5px;padding:3px 6px;
-  display:inline-block;white-space:nowrap;line-height:1;
-}
-.tag.on{color:var(--accent);border-color:var(--accent-border);background:var(--accent-dim)}
-
-/* ---- layout ---- */
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:2}
-.band{padding:clamp(72px,11vw,148px) 0;position:relative}
-.band--tight{padding:clamp(56px,8vw,104px) 0}
-.rule{border-top:1px solid var(--hairline)}
 
 /* ---- buttons ---- */
 .btn{
-  position:relative;display:inline-flex;align-items:center;gap:12px;cursor:pointer;
-  font-family:var(--f-mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.12em;
-  border-radius:12px;padding:15px 22px;border:1px solid transparent;background:none;color:inherit;
-  transition:transform .2s var(--ease),background .25s,color .25s,border-color .25s,box-shadow .3s;
+  display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+  font-family:var(--f-mono);font-size:11.5px;font-weight:500;text-transform:uppercase;letter-spacing:0.11em;
+  border-radius:11px;padding:15px 24px;min-height:48px;border:1px solid transparent;background:none;color:inherit;
+  transition:transform .18s var(--ease),background .22s,color .22s,border-color .22s;
 }
-.btn .arrow{transition:transform .25s var(--ease);display:inline-block}
-.btn:hover .arrow{transform:translateX(5px)}
 .btn:active{transform:scale(.985)}
 .btn--primary{background:var(--btn-bg);color:var(--btn-fg)}
-.btn--primary:hover{box-shadow:0 14px 40px -18px rgba(0,0,0,.6)}
-.btn--accent{background:var(--accent);color:var(--bg)}
-.btn--accent:hover{background:var(--accent-deep)}
 .btn--ghost{border-color:var(--hairline-strong);color:var(--t2)}
 .btn--ghost:hover{border-color:var(--t2);color:var(--t1)}
 
 /* ============================================================= *
  *  HEADER
  * ============================================================= */
-header{
-  position:fixed;inset:0 0 auto 0;z-index:100;
-  border-bottom:1px solid transparent;
-  transition:background .4s var(--ease),border-color .4s var(--ease);
-}
-header.scrolled{
-  background:color-mix(in srgb,var(--bg) 82%,transparent);
-  backdrop-filter:saturate(140%) blur(14px);
-  -webkit-backdrop-filter:saturate(140%) blur(14px);
-  border-color:var(--hairline);
-}
-.nav{
-  display:flex;align-items:center;justify-content:space-between;height:64px;
-  max-width:1320px;margin:0 auto;padding:0 var(--gutter);
-}
-.brand{display:flex;align-items:center;gap:11px}
-.brand .mk{width:26px;height:26px}
-.brand .wm{font-family:var(--f-serif);font-size:25px;line-height:1;letter-spacing:0.005em}
-.nav-links{display:flex;align-items:center;gap:30px}
-.nav-links a{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--t2);transition:color .25s}
-.nav-links a:hover{color:var(--t1)}
-.nav-right{display:flex;align-items:center;gap:14px}
-.nav-cta{
-  border:1px solid var(--hairline-strong);border-radius:9px;padding:9px 15px;
-  font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;
-  color:var(--t1)!important;transition:all .25s var(--ease);
-}
-.nav-cta:hover{background:var(--t1);color:var(--bg)!important;border-color:var(--t1)}
-
-/* theme toggle */
-.tgl{
-  width:34px;height:34px;border-radius:9px;border:1px solid var(--hairline-strong);
-  background:var(--surface);color:var(--t2);cursor:pointer;display:inline-flex;
-  align-items:center;justify-content:center;transition:all .25s var(--ease);
-}
-.tgl:hover{color:var(--t1);border-color:var(--t2)}
-.tgl svg{width:15px;height:15px}
-html[data-theme="dark"] .tgl .sun{display:block}
+header{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 86%,transparent);
+  backdrop-filter:saturate(140%) blur(12px);-webkit-backdrop-filter:saturate(140%) blur(12px);
+  border-bottom:1px solid transparent;transition:border-color .3s}
+header.scrolled{border-color:var(--hairline)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:66px;
+  max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{width:25px;height:25px;border-radius:6px}
+.brand span{font-family:var(--f-serif);font-size:24px;line-height:1;letter-spacing:-0.01em}
+.nav-right{display:flex;align-items:center;gap:8px}
+.tgl{width:44px;height:44px;border-radius:10px;border:1px solid var(--hairline-strong);background:var(--surface);
+  color:var(--t2);cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.tgl:hover{color:var(--t1)}
+.tgl svg{width:16px;height:16px}
 html[data-theme="dark"] .tgl .moon{display:none}
 html[data-theme="light"] .tgl .sun{display:none}
-html[data-theme="light"] .tgl .moon{display:block}
-
-.menu-btn{display:none;background:var(--surface);border:1px solid var(--hairline-strong);border-radius:9px;width:34px;height:34px;color:var(--t1);cursor:pointer;align-items:center;justify-content:center}
-@media(max-width:900px){
-  .nav-links{
-    position:fixed;inset:64px 0 auto 0;flex-direction:column;align-items:flex-start;gap:4px;
-    background:var(--bg);border-bottom:1px solid var(--hairline);padding:18px var(--gutter) 28px;
-    transform:translateY(-8px);opacity:0;pointer-events:none;transition:all .3s var(--ease);
-  }
-  .nav-links.open{transform:none;opacity:1;pointer-events:auto}
-  .nav-links a{padding:12px 0;font-size:13px;width:100%;border-bottom:1px solid var(--hairline)}
-  .menu-btn{display:inline-flex}
-  .nav .nav-cta{display:none}
-}
-
-/* ============================================================= *
- *  CARD PRIMITIVE (instrument)
- * ============================================================= */
-.card{
-  position:relative;background:var(--card);border:1px solid var(--hairline);
-  border-radius:20px;padding:26px;
-}
-/* calibration ticks — the "instrument" tell */
-.card .ticks{position:absolute;top:16px;left:16px;display:flex;align-items:flex-end;gap:2px;opacity:.5}
-.card .ticks span{width:1px;background:var(--t4)}
-.card .ticks span:nth-child(1){height:7px}
-.card .ticks span:nth-child(2){height:10px}
-.card .ticks span:nth-child(3){height:7px}
-.card .seq{position:absolute;top:16px;right:18px;font-family:var(--f-mono);font-size:9px;letter-spacing:0.12em;color:var(--t3);text-transform:uppercase}
+.nav .btn{padding:12px 18px;min-height:44px}
+@media(max-width:560px){.nav .btn--primary{display:none}}
 
 /* ============================================================= *
  *  HERO
  * ============================================================= */
-.hero{padding:132px 0 clamp(60px,9vw,110px);position:relative}
-.hero::before{
-  content:"";position:absolute;top:-40px;left:50%;transform:translateX(-50%);
-  width:min(1100px,120vw);height:760px;background:var(--glow);z-index:0;
-  pointer-events:none;
+.hero{padding:clamp(56px,9vw,112px) 0 clamp(52px,8vw,96px)}
+/* Text and the artifact share the width on a desktop. Stacked, the right half of
+   the page is dead space and the hero runs long; side by side, the claim and the
+   thing it describes are visible at once. */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,0.82fr);
+  gap:clamp(34px,5vw,60px);align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+.hero .label{display:flex;align-items:center;gap:11px}
+.hero .label .tick{width:22px;height:1px;background:var(--accent);opacity:.85;display:inline-block}
+h1{
+  font-family:var(--f-body);font-weight:500;
+  font-size:clamp(36px,4.4vw,53px);line-height:1.06;letter-spacing:-0.032em;
+  margin:20px 0 0;max-width:21ch;text-wrap:balance;
 }
-.hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:clamp(32px,5vw,72px);align-items:center;position:relative;z-index:2}
-.hero h1{
-  font-family:var(--f-serif);font-weight:400;
-  font-size:clamp(42px,6.2vw,80px);line-height:0.92;letter-spacing:-0.026em;
-  margin:22px 0 0;
+.lede{font-size:clamp(16.5px,1.7vw,19px);color:var(--t2);max-width:46ch;margin:24px 0 0;line-height:1.62}
+.hero-cta{display:flex;flex-wrap:wrap;gap:11px;margin-top:34px}
+
+/* ============================================================= *
+ *  ARTIFACT — one look at a finished run, rather than a tour
+ * ============================================================= */
+.art{
+  border:1px solid var(--hairline);border-radius:20px;
+  background:var(--card);padding:clamp(22px,3.4vw,34px);
 }
-/* One statement, one color. The second clause used to be set italic and dimmed —
-   the serif/italic/fade headline is the single most recognisable tell of a
-   template landing page, and it made the sentence read as decoration rather than
-   as a claim. Emphasis now comes from the line break and the size. */
-.hero h1 .em{display:block}
-.hero .lede{font-size:clamp(16px,1.7vw,19px);color:var(--t2);max-width:34ch;margin:22px 0 0;line-height:1.55}
-.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.hero-meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px}
-.hero-meta .mi{display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--t3)}
-.hero-meta .mi .dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
-
-@media(max-width:880px){
-  .hero-grid{grid-template-columns:1fr;gap:44px}
-  .hero{padding-top:118px}
-  .hero .lede{max-width:46ch}
-}
-
-/* ============================================================= *
- *  APP EMULATION — the readout card
- * ============================================================= */
-.device{position:relative;z-index:2}
-.readout{padding:24px 22px 22px}
-.readout .head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-top:6px}
-.readout .head .wm{font-family:var(--f-serif);font-size:20px}
-.streak{font-family:var(--f-mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--t3);border:1px solid var(--hairline);border-radius:99px;padding:5px 9px;display:flex;align-items:center;gap:6px}
-.streak .pulse{position:relative;width:6px;height:6px;border-radius:50%;background:var(--accent)}
-.streak .pulse::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--accent);animation:ring 2.6s var(--ease-soft) infinite}
-@keyframes ring{0%{transform:scale(.6);opacity:.7}100%{transform:scale(3);opacity:0}}
-
-.hero-readout{position:relative;background:var(--card-2);border:1px solid var(--hairline);border-radius:16px;padding:20px 18px;overflow:hidden}
-.breath{position:absolute;top:-30%;right:-15%;width:220px;height:220px;background:var(--glow);opacity:.9;pointer-events:none;animation:breathe 7s var(--ease-soft) infinite}
-@keyframes breathe{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.14);opacity:1}}
-.hero-readout .rl{font-family:var(--f-mono);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--t3);position:relative}
-.figure{display:flex;align-items:baseline;gap:4px;margin:8px 0 2px;position:relative}
-.figure .sign{font-family:var(--f-serif);font-size:34px;line-height:1;color:var(--accent)}
-.figure .big{font-family:var(--f-body);font-weight:700;font-size:64px;line-height:0.8;letter-spacing:-0.05em;font-variant-numeric:tabular-nums}
-.figure .unit{font-family:var(--f-mono);font-size:15px;color:var(--t2);margin-left:2px}
-.hero-readout .cap{font-family:var(--f-serif);font-size:16px;color:var(--t2);position:relative;margin-top:2px}
-
-/* reference bar */
-.refbar{margin-top:18px;position:relative}
-.refbar .track{height:4px;border-radius:99px;background:var(--hairline);position:relative;overflow:hidden}
-.refbar .fill{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--accent);border-radius:99px;transition:width 1.4s var(--ease) .2s}
-.refbar .mark{position:absolute;top:-3px;width:2px;height:10px;background:var(--t2);border-radius:2px}
-.refbar .lbls{display:flex;justify-content:space-between;margin-top:9px;font-family:var(--f-mono);font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:var(--t3)}
-
-/* data rows */
-.rows{margin-top:8px}
-.drow{display:flex;align-items:center;gap:10px;padding:13px 4px;border-top:1px solid var(--hairline)}
-.drow .nm{font-size:12.5px;color:var(--t1);flex:1;min-width:0}
-.drow .val{font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--t1);font-variant-numeric:tabular-nums}
-.drow .dl{font-family:var(--f-mono);font-size:11px;font-variant-numeric:tabular-nums}
-.drow .dl.up{color:var(--accent)}
-.drow .dl.down{color:var(--danger)}
-.drow .dl.flat{color:var(--t3)}
-
-/* measurement table (hover reveal) */
-.mtable{margin-top:16px;border:1px solid var(--hairline);border-radius:12px;overflow:hidden}
-.mtable .mr{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-top:1px solid var(--hairline);cursor:default}
-.mtable .mr:first-child{border-top:none}
-.mtable .mr:hover,.mtable .mr:focus-visible{background:var(--hover)}
-.mtable .mk{font-family:var(--f-mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--t3)}
-.mtable .mv{position:relative;height:16px;min-width:96px;text-align:right}
-.mtable .mv .v,.mtable .mv .s{position:absolute;right:0;top:0;font-family:var(--f-mono);font-size:12px;font-variant-numeric:tabular-nums;transition:opacity .3s var(--ease),transform .3s var(--ease);white-space:nowrap}
-.mtable .mv .v{color:var(--t1)}
-.mtable .mv .s{color:var(--accent);opacity:0;transform:translateY(7px)}
-.mtable .mr:hover .mv .v,.mtable .mr:focus-visible .mv .v{opacity:0;transform:translateY(-7px)}
-.mtable .mr:hover .mv .s,.mtable .mr:focus-visible .mv .s{opacity:1;transform:none}
-.mhint{font-family:var(--f-mono);font-size:8.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--t4);text-align:center;margin-top:10px}
+@media(max-width:900px){.art{max-width:560px}}
+.art-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.art-top .label{line-height:1.5}
+.art-top .art-tag{flex:0 0 auto}
+.art-tag{font-family:var(--f-mono);font-size:8.5px;font-weight:500;text-transform:uppercase;letter-spacing:0.12em;
+  color:var(--t3);border:1px solid var(--hairline-strong);border-radius:5px;padding:4px 7px;line-height:1}
+.figure{display:flex;align-items:flex-start;gap:4px;margin:22px 0 0}
+.figure .sign{font-size:clamp(26px,3.4vw,34px);font-weight:500;color:var(--accent);line-height:1.05}
+.figure .big{font-family:var(--f-body);font-weight:600;font-size:clamp(56px,8.4vw,88px);line-height:0.9;
+  letter-spacing:-0.045em;font-variant-numeric:tabular-nums}
+.figure .unit{font-size:clamp(18px,2.2vw,22px);color:var(--t3);align-self:flex-end;padding-bottom:9px}
+.art-cap{font-family:var(--f-serif);font-size:17px;color:var(--t2);margin:8px 0 0}
+.rows{margin:26px 0 0;border-top:1px solid var(--hairline)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px solid var(--hairline)}
+.row:last-child{border-bottom:none}
+.row .nm{font-size:15px;color:var(--t2)}
+.row .rt{display:flex;align-items:center;gap:11px}
+.row .src{font-family:var(--f-mono);font-size:8.5px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--accent);border:1px solid var(--accent-border);background:var(--accent-dim);border-radius:5px;padding:4px 6px;line-height:1}
+.row .val{font-family:var(--f-mono);font-size:14px;color:var(--t1);font-variant-numeric:tabular-nums}
 
 /* ============================================================= *
- *  SECTION HEADERS
+ *  PRINCIPLES
  * ============================================================= */
-.sec-head{max-width:60ch}
-.sec-head h2{
-  font-family:var(--f-serif);font-weight:400;font-size:clamp(29px,4.2vw,50px);
-  line-height:0.98;letter-spacing:-0.024em;margin:18px 0 0;text-wrap:balance;
-}
-.sec-head h2 .em{display:block}
-/* The two headings that sit inside their own grid column rather than a .sec-head. */
-.dh{
-  font-weight:400;font-size:clamp(29px,4.2vw,50px);line-height:0.98;
-  letter-spacing:-0.024em;margin:18px 0 0;text-wrap:balance;
-}
-.dh .em{display:block}
-.sec-head p{color:var(--t2);font-size:17px;margin:18px 0 0;max-width:52ch}
+.principles{padding:clamp(56px,9vw,110px) 0;border-top:1px solid var(--hairline)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(26px,4vw,52px);margin-top:38px}
+@media(max-width:820px){.grid3{grid-template-columns:1fr;gap:34px}}
+.p-num{font-family:var(--f-mono);font-size:10px;letter-spacing:0.16em;color:var(--accent)}
+.grid3 h3{font-family:var(--f-body);font-weight:600;font-size:19px;letter-spacing:-0.018em;margin:14px 0 0}
+.grid3 p{color:var(--t2);font-size:15.5px;margin:9px 0 0;line-height:1.58}
 
 /* ============================================================= *
- *  STEPS (how it works)
+ *  BETA
  * ============================================================= */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:56px}
-.step{position:relative;padding:24px 20px 26px;border:1px solid var(--hairline);border-radius:18px;background:var(--card);transition:border-color .3s var(--ease),transform .3s var(--ease)}
-.step:hover{border-color:var(--hairline-strong);transform:translateY(-3px)}
-.step .ix{font-family:var(--f-body);font-weight:700;font-size:38px;line-height:1;letter-spacing:-0.04em;color:var(--t4);font-variant-numeric:tabular-nums}
-.step h3{font-family:var(--f-serif);font-weight:400;font-size:21px;line-height:1.15;margin:18px 0 8px}
-.step p{font-size:14px;color:var(--t2);line-height:1.5;margin:0}
-.step .st{margin-top:16px}
-@media(max-width:880px){.steps{grid-template-columns:1fr 1fr;gap:14px}}
-@media(max-width:520px){.steps{grid-template-columns:1fr}}
-
-/* ============================================================= *
- *  METHOD (two-up)
- * ============================================================= */
-.two{display:grid;grid-template-columns:0.92fr 1.08fr;gap:clamp(32px,5vw,72px);align-items:center;margin-top:56px}
-.two.rev{grid-template-columns:1.08fr 0.92fr}
-@media(max-width:880px){.two,.two.rev{grid-template-columns:1fr;gap:36px}}
-.flist{list-style:none;padding:0;margin:26px 0 0}
-.flist li{display:flex;gap:14px;padding:16px 0;border-top:1px solid var(--hairline)}
-.flist li .fi{flex-shrink:0;width:22px;height:22px;border:1px solid var(--accent-border);border-radius:7px;display:flex;align-items:center;justify-content:center;color:var(--accent);margin-top:1px}
-.flist li .fi svg{width:12px;height:12px}
-.flist li h4{font-size:14.5px;font-weight:600;margin:0 0 3px}
-.flist li p{font-size:14px;color:var(--t2);margin:0;line-height:1.5}
-
-/* ============================================================= *
- *  INTERACTION GRAPH (the moat)
- * ============================================================= */
-.graph-card{padding:30px 26px}
-.graph-wrap{position:relative;width:100%;max-width:440px;margin:6px auto 0;aspect-ratio:1/0.82}
-.graph-wrap svg{width:100%;height:100%;overflow:visible}
-.gnode circle{transition:r .3s var(--ease)}
-.gedge{stroke-linecap:round}
-.gleg{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;margin-top:20px}
-.gleg .gi{display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:var(--t3)}
-.gleg .gi .sw{width:16px;height:2px;border-radius:2px}
-.gnote{font-family:var(--f-serif);font-size:16px;color:var(--t2);text-align:center;margin:20px auto 0;max-width:40ch}
-.gnote .n{font-family:var(--f-mono);font-style:normal;font-size:13px;color:var(--accent);font-variant-numeric:tabular-nums}
-
-/* ============================================================= *
- *  BOUNDARIES / PRIVACY grid
- * ============================================================= */
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px}
-@media(max-width:820px){.grid3{grid-template-columns:1fr}}
-.tile{padding:26px 24px;border:1px solid var(--hairline);border-radius:18px;background:var(--card)}
-.tile .ic{width:34px;height:34px;border-radius:10px;border:1px solid var(--hairline-strong);display:flex;align-items:center;justify-content:center;color:var(--accent);margin-bottom:18px}
-.tile .ic svg{width:17px;height:17px}
-.tile h3{font-family:var(--f-serif);font-weight:400;font-size:22px;margin:0 0 10px;line-height:1.15}
-.tile p{font-size:14.5px;color:var(--t2);margin:0;line-height:1.55}
-.tile .li{display:flex;gap:9px;font-size:13.5px;color:var(--t2);padding:8px 0;border-top:1px solid var(--hairline)}
-.tile .li:first-of-type{margin-top:14px}
-.tile .li .x{color:var(--accent);flex-shrink:0;font-family:var(--f-mono);font-size:11px;margin-top:2px}
-
-/* stat band */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hairline);border:1px solid var(--hairline);border-radius:18px;overflow:hidden;margin-top:8px}
-.stat{background:var(--bg);padding:30px 22px;text-align:center}
-.stat .n{font-family:var(--f-body);font-weight:700;font-size:clamp(30px,4vw,44px);line-height:1;letter-spacing:-0.04em;font-variant-numeric:tabular-nums}
-.stat .n .u{font-family:var(--f-mono);font-size:16px;font-weight:500;color:var(--t3);margin-left:2px;letter-spacing:0}
-.stat .l{font-family:var(--f-mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--t3);margin-top:12px}
-@media(max-width:720px){.stats{grid-template-columns:1fr 1fr}}
-
-/* ============================================================= *
- *  BETA / WAITLIST
- * ============================================================= */
-.beta{position:relative;overflow:hidden}
-.beta .card{padding:clamp(30px,5vw,56px);text-align:center}
-.beta::before{content:"";position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:900px;height:520px;background:var(--glow);pointer-events:none;z-index:0}
-.beta h2{font-family:var(--f-serif);font-weight:400;font-size:clamp(31px,4.6vw,56px);line-height:0.96;letter-spacing:-0.026em;margin:16px auto 0;max-width:20ch;text-wrap:balance}
-.beta p{color:var(--t2);font-size:17px;margin:18px auto 0;max-width:48ch}
-.wl{display:flex;gap:10px;max-width:460px;margin:30px auto 0;flex-wrap:wrap}
-.wl input{
-  flex:1;min-width:200px;background:var(--card-2);border:1px solid var(--hairline-strong);border-radius:12px;
-  padding:15px 16px;color:var(--t1);font-family:var(--f-mono);font-size:12.5px;letter-spacing:0.02em;transition:border-color .25s;
-}
-.wl input::placeholder{color:var(--t3);text-transform:none}
-.wl input:focus{outline:none;border-color:var(--accent-border)}
-.wl button{flex-shrink:0}
-.wl-note{font-family:var(--f-mono);font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--t3);margin-top:16px}
-.wl-ok{color:var(--accent);font-family:var(--f-mono);font-size:12px;letter-spacing:0.04em;margin:22px auto 0;display:none}
-.wl-ok.show{display:block}
-.beta-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:26px}
+.beta{padding:clamp(56px,9vw,110px) 0 clamp(64px,10vw,120px);border-top:1px solid var(--hairline)}
+.beta h2{font-family:var(--f-body);font-weight:500;font-size:clamp(30px,4.2vw,46px);
+  line-height:1.05;letter-spacing:-0.032em;margin:18px 0 0;max-width:16ch}
+.beta p{color:var(--t2);max-width:46ch;margin:18px 0 0}
+.beta-cta{display:flex;flex-wrap:wrap;gap:11px;align-items:center;margin-top:30px}
+.beta-note{font-family:var(--f-mono);font-size:10px;letter-spacing:0.13em;text-transform:uppercase;color:var(--t3);margin-top:20px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:26px}
+.tag{font-family:var(--f-mono);font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--t3);border:1px solid var(--hairline);border-radius:6px;padding:6px 9px;line-height:1}
+.tag.on{color:var(--accent);border-color:var(--accent-border);background:var(--accent-dim)}
 
 /* ============================================================= *
  *  FOOTER
  * ============================================================= */
-footer{border-top:1px solid var(--hairline);padding:60px 0 40px;position:relative;z-index:2}
-.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
-@media(max-width:760px){.foot{grid-template-columns:1fr 1fr;gap:32px}}
-.foot .fb .wm{font-family:var(--f-serif);font-size:24px;display:flex;align-items:center;gap:10px}
-.foot .fb .mk{width:24px;height:24px}
-.foot .fb p{color:var(--t3);font-size:13.5px;max-width:34ch;margin:16px 0 0;line-height:1.5}
-.foot h5{font-family:var(--f-mono);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--t3);margin:0 0 16px}
-.foot ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px}
-.foot ul a{font-size:14px;color:var(--t2);transition:color .2s}
-.foot ul a:hover{color:var(--t1)}
-.foot-base{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--hairline)}
-.foot-base .dis{font-family:var(--f-serif);font-size:15px;color:var(--t3);max-width:56ch}
-.foot-base .cp{font-family:var(--f-mono);font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--t3)}
+footer{border-top:1px solid var(--hairline);padding:40px 0 56px}
+.dis{font-family:var(--f-serif);font-size:15.5px;color:var(--t3);max-width:60ch;margin:0}
+.foot-row{display:flex;flex-wrap:wrap;gap:14px 26px;justify-content:space-between;align-items:center;margin-top:26px}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px}
+.foot-links a{font-family:var(--f-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.11em;
+  color:var(--t2);padding:11px 12px;border-radius:8px;min-height:44px;display:inline-flex;align-items:center}
+.foot-links a:hover{color:var(--t1);background:var(--surface)}
+.cp{font-family:var(--f-mono);font-size:9.5px;letter-spacing:0.11em;text-transform:uppercase;color:var(--t3)}
 
-/* reveal on scroll */
-.rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+/* reveal */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){
-  .rv{opacity:1;transform:none;transition:none}
-  .breath,.streak .pulse::after{animation:none}
-  .refbar .fill{transition:none}
-}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- ===================== HEADER ===================== -->
 <header id="hdr">
-  <nav class="nav">
-    <a class="brand" href="#top" aria-label="AshGrid home">
-      <span class="mk" data-mark></span>
-      <span class="wm">AshGrid</span>
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="/" aria-label="AshGrid home">
+      <img src="/logo-mark.png" alt="" width="25" height="25" />
+      <span>AshGrid</span>
     </a>
-    <div class="nav-links" id="navlinks">
-      <a href="#how">How it works</a>
-      <a href="#method">The method</a>
-      <a href="#community">Community</a>
-      <a href="#trust">Trust &amp; privacy</a>
-      <a href="#beta">Beta</a>
-    </div>
     <div class="nav-right">
-      <button class="tgl" id="themeBtn" aria-label="Toggle color theme" title="Toggle theme">
+      <button class="tgl" id="themeBtn" aria-label="Toggle color theme">
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
       </button>
-      <a class="nav-cta" href="#beta">Join the beta</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
+      <a class="btn btn--primary" href="mailto:support@ashgrid.co?subject=Beta%20access">Request access</a>
     </div>
   </nav>
 </header>
 
 <main id="main">
-<span id="top"></span>
 
-<!-- ===================== HERO ===================== -->
-<section class="hero band" aria-labelledby="hero-h">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <span class="kicker"><span class="tick"></span>US Public Beta · Adults 18+</span>
-      <h1 id="hero-h">Run the experiment <span class="em">on yourself.</span></h1>
-      <p class="lede">AshGrid turns a health hunch into a structured observation. Record one starting snapshot, run a real protocol, and watch your change against it — with the method and the source of every number always in view.</p>
-      <div class="hero-cta">
-        <a class="btn btn--primary" href="#beta">Request beta access <span class="arrow">→</span></a>
-        <a class="btn btn--ghost" href="#method">See the method</a>
-      </div>
-      <div class="hero-meta">
-        <span class="mi"><span class="dot"></span>Compared with your starting snapshot</span>
-        <span class="mi"><span class="dot"></span>Provenance on every value</span>
-        <span class="mi"><span class="dot"></span>Personal observations, not medical claims</span>
-      </div>
-    </div>
-
-    <!-- App emulation: the readout -->
-    <div class="device rv">
-      <div class="card readout" role="img" aria-label="A preview of the AshGrid app: a deep-sleep result of plus eighteen percent versus the starting snapshot, with source-tagged metrics and the underlying statistics.">
-        <span class="ticks" aria-hidden="true"><span></span><span></span><span></span></span>
-        <span class="seq">Run 02 · Day 08/14</span>
-        <div class="head">
-          <span class="wm">AshGrid</span>
-          <span class="streak"><span class="pulse"></span>Recording today</span>
+  <!-- ---------------- HERO ---------------- -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="label"><span class="tick"></span>US beta · Adults 18+</span>
+        <h1>An open experiment in what actually works</h1>
+        <p class="lede">A decentralized wellness experiment. Thousands of people each
+        testing one thing at a time, pooling what they find — private by default, and
+        nothing published until enough people have run it.</p>
+        <div class="hero-cta">
+          <a class="btn btn--primary" href="mailto:support@ashgrid.co?subject=Beta%20access">Request access</a>
+          <a class="btn btn--ghost" href="#principles">What makes it different</a>
         </div>
+      </div>
 
-        <div class="hero-readout">
-          <span class="breath" aria-hidden="true"></span>
-          <div class="rl">Deep sleep · vs starting snapshot</div>
-          <div class="figure">
-            <span class="sign">+</span><span class="big num" data-count="18">0</span><span class="unit">%</span>
-          </div>
-          <div class="cap">your strongest response so far.</div>
-          <div class="refbar" data-refbar>
-            <div class="track"><div class="fill" data-fill="74"></div><span class="mark" style="left:22%"></span></div>
-            <div class="lbls"><span>Snapshot</span><span>Now</span><span>Goal</span></div>
-          </div>
+      <!-- One finished run, shown rather than explained. Illustrative, and labelled
+           as such — the product has no published community statistics yet. -->
+      <div class="art rv">
+        <div class="art-top">
+          <span class="label">Deep sleep · vs snapshot</span>
+          <span class="art-tag">Example</span>
         </div>
-
+        <div class="figure">
+          <span class="sign">+</span><span class="big">18</span><span class="unit">%</span>
+        </div>
+        <p class="art-cap">Your strongest response so far.</p>
         <div class="rows">
-          <div class="drow"><span class="nm">HRV overnight</span><span class="tag on">APPLE</span><span class="val num">62 ms</span><span class="dl up num">+8</span></div>
-          <div class="drow"><span class="nm">Resting heart rate</span><span class="tag on">APPLE</span><span class="val num">54 bpm</span><span class="dl down num">−3</span></div>
-          <div class="drow"><span class="nm">Sleep felt like</span><span class="tag">YOU</span><span class="val num">8 / 10</span><span class="dl flat num">+2</span></div>
-        </div>
-
-        <div class="mtable" aria-label="Underlying statistics — hover a row to reveal the exact value">
-          <div class="mr" tabindex="0"><span class="mk">Confidence</span><span class="mv"><span class="v num">87%</span><span class="s num">p = 0.013</span></span></div>
-          <div class="mr" tabindex="0"><span class="mk">Effect size</span><span class="mv"><span class="v num">0.8 d</span><span class="s num">Cohen's d · large</span></span></div>
-          <div class="mr" tabindex="0"><span class="mk">Adherence</span><span class="mv"><span class="v num">100%</span><span class="s num">8 of 8 days</span></span></div>
-        </div>
-        <div class="mhint">Hover a row to see where each number comes from</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== LOGO / TRUST STRIP ===================== -->
-<div class="wrap"><div class="rule"></div></div>
-<section class="band--tight" aria-label="At a glance">
-  <div class="wrap">
-    <div class="stats rv">
-      <div class="stat"><div class="n num">1</div><div class="l">Starting snapshot per run</div></div>
-      <div class="stat"><div class="n num">~60<span class="u">s</span></div><div class="l">A daily check-in</div></div>
-      <div class="stat"><div class="n num">30<span class="u">+</span></div><div class="l">User floor for a public finding</div></div>
-      <!-- 2, not 5: Apple Health and Health Connect are the sources that actually
-           work. Oura/WHOOP/Fitbit are marked "soon" in the beta section and must not
-           be counted here — the privacy policy names only these two. -->
-      <div class="stat"><div class="n num">2</div><div class="l">Device sources, read-only</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== HOW IT WORKS ===================== -->
-<section class="band" id="how" aria-labelledby="how-h">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="kicker"><span class="tick"></span>The loop</span>
-      <h2 id="how-h">Four steps, <span class="em">start to result.</span></h2>
-      <p>There are no streaks or scores here. You take one reading before you start, follow a protocol, and measure what changed against that starting point.</p>
-    </div>
-    <div class="steps">
-      <div class="step rv">
-        <div class="ix num">01</div>
-        <h3>Record a starting snapshot</h3>
-        <p>One reading of the thing you're about to observe, taken before you start — from your wearable when it can be, entered by you when it can't. It never changes afterward; every later reading is compared against it.</p>
-        <div class="st"><span class="tag on">SNAPSHOT</span></div>
-      </div>
-      <div class="step rv">
-        <div class="ix num">02</div>
-        <h3>Run a structured protocol</h3>
-        <p>Pick a protocol and pin down the details: amount, timing, duration, formulation. If the same protocol already exists, you join it rather than duplicate it — that's what makes runs comparable.</p>
-        <div class="st"><span class="tag">PROTOCOL</span></div>
-      </div>
-      <div class="step rv">
-        <div class="ix num">03</div>
-        <h3>Check in, about a minute a day</h3>
-        <p>Confirm the protocol, answer a couple of fixed questions, let wearable metrics fill themselves in. Works offline; records instantly.</p>
-        <div class="st"><span class="tag on">CHECK-IN</span></div>
-      </div>
-      <div class="step rv">
-        <div class="ix num">04</div>
-        <h3>See your reported change</h3>
-        <p>At the recommended duration you get an immutable result: your change vs the snapshot, the effect size, the uncertainty — plain-language, then the stats on demand.</p>
-        <div class="st"><span class="tag">RESULT</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== METHOD / HONESTY ===================== -->
-<div class="wrap"><div class="rule"></div></div>
-<section class="band" id="method" aria-labelledby="method-h">
-  <div class="wrap">
-    <div class="two">
-      <div class="rv">
-        <span class="kicker"><span class="tick"></span>The method</span>
-        <h2 class="serif dh" id="method-h">Uncertainty is <span class="em">part of the result.</span></h2>
-        <ul class="flist">
-          <li>
-            <span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-            <div><h4>One-sample, one snapshot</h4><p>Each experiment day is compared with your single starting snapshot as a fixed reference — and the method discloses where nominal p-values can read optimistic.</p></div>
-          </li>
-          <li>
-            <span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-            <div><h4>Measured outcome ≠ your verdict</h4><p>The statistics and how you felt are kept as two separate signals. AshGrid can even surface when they disagree — never quietly overwrite one with the other.</p></div>
-          </li>
-          <li>
-            <span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-            <div><h4>Negatives and gaps count</h4><p>Missed days, no-effect runs, and things you noticed aren't buried. Insufficient data stays inconclusive — a reliability score is never dressed up as a probability.</p></div>
-          </li>
-          <li>
-            <span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-            <div><h4>Every number is traceable</h4><p>Oura, Apple Health, or you — each value carries its source. Results are versioned, so improving the algorithm never rewrites your history.</p></div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="device rv">
-        <div class="card graph-card" style="padding:24px">
-          <span class="ticks" aria-hidden="true"><span></span><span></span><span></span></span>
-          <span class="seq">Method · one-sample v2</span>
-          <div style="padding-top:14px">
-            <div class="label" style="margin-bottom:14px">Result · Magnesium glycinate · Sleep</div>
-            <div class="hero-readout" style="background:transparent;border:none;padding:0">
-              <div class="rl">Reported improvement · vs snapshot</div>
-              <div class="figure"><span class="sign">+</span><span class="big num" data-count="18">0</span><span class="unit">%</span></div>
-              <div class="cap">a clear, consistent response across the run.</div>
-            </div>
-            <div class="mtable" style="margin-top:20px">
-              <div class="mr" tabindex="0"><span class="mk">Confidence</span><span class="mv"><span class="v num">87%</span><span class="s num">p = 0.013</span></span></div>
-              <div class="mr" tabindex="0"><span class="mk">Effect size</span><span class="mv"><span class="v num">0.8 d</span><span class="s num">Cohen's d · large</span></span></div>
-              <div class="mr" tabindex="0"><span class="mk">Effective n</span><span class="mv"><span class="v num">7.4</span><span class="s num">autocorr-adjusted</span></span></div>
-              <div class="mr" tabindex="0"><span class="mk">Adherence</span><span class="mv"><span class="v num">100%</span><span class="s num">14 of 14 days</span></span></div>
-            </div>
-            <div class="mhint">Compared with your starting snapshot · method version shown</div>
+          <div class="row">
+            <span class="nm">HRV overnight</span>
+            <span class="rt"><span class="src">Apple</span><span class="val">62 ms</span></span>
+          </div>
+          <div class="row">
+            <span class="nm">Resting heart rate</span>
+            <span class="rt"><span class="src">Apple</span><span class="val">54 bpm</span></span>
+          </div>
+          <div class="row">
+            <span class="nm">Sleep felt like</span>
+            <span class="rt"><span class="src">You</span><span class="val">8 / 10</span></span>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===================== COMMUNITY / THE MOAT ===================== -->
-<div class="wrap"><div class="rule"></div></div>
-<section class="band" id="community" aria-labelledby="comm-h">
-  <div class="wrap">
-    <div class="two rev">
-      <div class="device rv">
-        <div class="card graph-card">
-          <span class="ticks" aria-hidden="true"><span></span><span></span><span></span></span>
-          <span class="seq">Combination insight</span>
-          <div class="label" style="margin:10px 0 2px">What runs well together</div>
-          <div class="graph-wrap">
-            <svg viewBox="0 0 440 360" role="img" aria-label="A network showing magnesium at the center connected to related experiments; a green edge to glycine enhances the effect, a yellow edge to caffeine-late interferes.">
-              <!-- edges -->
-              <line class="gedge" x1="220" y1="180" x2="96" y2="92"  stroke="var(--accent)" stroke-width="4"/>
-              <line class="gedge" x1="220" y1="180" x2="356" y2="96" stroke="var(--warn)"  stroke-width="2.4"/>
-              <line class="gedge" x1="220" y1="180" x2="70"  y2="250" stroke="var(--hairline-strong)" stroke-width="2"/>
-              <line class="gedge" x1="220" y1="180" x2="230" y2="322" stroke="var(--accent)" stroke-width="3"/>
-              <line class="gedge" x1="220" y1="180" x2="372" y2="256" stroke="var(--hairline-strong)" stroke-width="1.6"/>
-              <!-- satellite nodes -->
-              <g class="gnode" font-family="var(--f-mono)">
-                <circle cx="96"  cy="92"  r="9"  fill="var(--accent)"/>
-                <circle cx="356" cy="96"  r="7"  fill="var(--warn)"/>
-                <circle cx="70"  cy="250" r="6"  fill="var(--t3)"/>
-                <circle cx="230" cy="322" r="8"  fill="var(--accent)"/>
-                <circle cx="372" cy="256" r="5.5" fill="var(--t3)"/>
-              </g>
-              <!-- center node -->
-              <circle cx="220" cy="180" r="30" fill="var(--card-2)" stroke="var(--accent-border)" stroke-width="1.5"/>
-              <circle cx="220" cy="180" r="30" fill="var(--accent-dim)"/>
-              <text x="220" y="176" text-anchor="middle" fill="var(--t1)" font-family="var(--f-mono)" font-size="12" font-weight="500">Mg</text>
-              <text x="220" y="190" text-anchor="middle" fill="var(--t3)" font-family="var(--f-mono)" font-size="8" letter-spacing="1">CORE</text>
-              <!-- labels -->
-              <text x="96"  y="72"  text-anchor="middle" fill="var(--t2)" font-family="var(--f-mono)" font-size="10">Glycine</text>
-              <text x="356" y="76"  text-anchor="middle" fill="var(--t2)" font-family="var(--f-mono)" font-size="10">Caffeine · late</text>
-              <text x="70"  y="272" text-anchor="middle" fill="var(--t3)" font-family="var(--f-mono)" font-size="10">L-theanine</text>
-              <text x="230" y="344" text-anchor="middle" fill="var(--t2)" font-family="var(--f-mono)" font-size="10">Wind-down light</text>
-              <text x="372" y="278" text-anchor="middle" fill="var(--t3)" font-family="var(--f-mono)" font-size="10">Zinc</text>
-            </svg>
-          </div>
-          <div class="gleg">
-            <span class="gi"><span class="sw" style="background:var(--accent)"></span>Enhances</span>
-            <span class="gi"><span class="sw" style="background:var(--warn)"></span>Interferes</span>
-            <span class="gi"><span class="sw" style="background:var(--hairline-strong)"></span>Neutral</span>
-          </div>
-          <div class="gnote">People who paired these saw <span class="n">+41%</span> — an observed association across <span class="n">847</span> runs, not a cause.</div>
+  <!-- ---------------- PRINCIPLES ---------------- -->
+  <section class="principles" id="principles">
+    <div class="wrap">
+      <h2 class="vh">Principles</h2>
+      <span class="label">Three rules it will not break</span>
+      <div class="grid3">
+        <div class="rv">
+          <div class="p-num">01</div>
+          <h3>Private by default</h3>
+          <p>Your runs are yours. Contributing to the shared record is a separate,
+          affirmative choice, and you can withdraw it at any time.</p>
         </div>
-      </div>
-
-      <div class="rv">
-        <span class="kicker"><span class="tick"></span>Community intelligence</span>
-        <h2 class="serif dh" id="comm-h">Every run adds to the <span class="em">shared record.</span></h2>
-        <p class="t2" style="font-size:17px;margin:18px 0 0;max-width:50ch">If you choose to contribute a de-identified result, it joins the community evidence — ranked by consistency, sample size, adherence, and provenance.</p>
-        <ul class="flist">
-          <li>
-            <span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-            <div><h4>The 30-user floor</h4><p>A combination finding only shows publicly when every compared group has at least 30 unique people — plus significance and a real effect. No sparse cross-filtered cohorts.</p></div>
-          </li>
-          <li>
-            <span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-            <div><h4>Association, stated as association</h4><p>Combination insights show sample size, uncertainty, and method version — described as observed patterns, never as a mechanism or a promise.</p></div>
-          </li>
-          <li>
-            <span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-            <div><h4>What didn't work is kept</h4><p>Failed and abandoned runs are first-class community data. They lower reliability rankings honestly instead of vanishing.</p></div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== TRUST / PRIVACY / BOUNDARIES ===================== -->
-<div class="wrap"><div class="rule"></div></div>
-<section class="band" id="trust" aria-labelledby="trust-h">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="kicker"><span class="tick"></span>What AshGrid is — and isn't</span>
-      <h2 id="trust-h">Clear about <span class="em">what it isn't.</span></h2>
-      <p>A personal wellness observation platform for US adults. Not a diagnosis, not a prescriber, not a pharmacy, not a medical device.</p>
-    </div>
-    <div class="grid3">
-      <div class="tile rv">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5z"/></svg></div>
-        <h3>Clear boundaries</h3>
-        <p>AshGrid records personal observations. It does not decide that anything is safe or effective for you.</p>
-        <div class="li"><span class="x">—</span><span>No dosing, sourcing, or treatment for restricted substances</span></div>
-        <div class="li"><span class="x">—</span><span>Condition-like searches become non-diagnostic wellness contexts</span></div>
-        <div class="li"><span class="x">—</span><span>Urgent red-flag guidance surfaces before anything else</span></div>
-      </div>
-      <div class="tile rv">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
-        <h3>Privacy by design</h3>
-        <p>Your health data works for your results and consented aggregates — and is never turned into a product to sell.</p>
-        <div class="li"><span class="x">—</span><span>No health-targeted ads, data brokers, or record licensing</span></div>
-        <div class="li"><span class="x">—</span><span>Wearables are read-only; raw provider records are never sold</span></div>
-        <div class="li"><span class="x">—</span><span>Contribution is opt-in, affirmative, and revocable</span></div>
-      </div>
-      <div class="tile rv">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="4"/></svg></div>
-        <h3>Built to last</h3>
-        <p>The engineering underneath treats your records like health data, because that is what they are.</p>
-        <div class="li"><span class="x">—</span><span>Append-only events; corrections reference the prior, never erase</span></div>
-        <div class="li"><span class="x">—</span><span>Immutable snapshots and versioned, auditable results</span></div>
-        <div class="li"><span class="x">—</span><span>US data regions, minimum-necessary AI, no PHI in logs</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== BETA ===================== -->
-<div class="wrap"><div class="rule"></div></div>
-<section class="band beta" id="beta" aria-labelledby="beta-h">
-  <div class="wrap">
-    <div class="card rv">
-      <span class="ticks" aria-hidden="true"><span></span><span></span><span></span></span>
-      <span class="seq">Public beta · 2026</span>
-      <div style="position:relative;z-index:2">
-        <span class="kicker" style="justify-content:center;display:flex"><span class="tick"></span>The beta is opening</span>
-        <h2 id="beta-h">Get in <span class="em">early.</span></h2>
-        <p>The public beta is free and includes the whole loop — discover, snapshot, run, check in, and read your result. We're onboarding US adults in waves. Leave your email and we'll write when your wave opens.</p>
-
-        <form class="wl" id="wlForm" novalidate>
-          <label for="wlEmail" class="skip">Email address</label>
-          <input id="wlEmail" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" required />
-          <button class="btn btn--accent" type="submit">Request access <span class="arrow">→</span></button>
-        </form>
-        <div class="wl-ok" id="wlOk">✓ You're on the list. We'll be in touch when your wave opens.</div>
-        <div class="wl-note">US residents · 18+ · No spam · One email when it's your turn</div>
-
-        <div class="beta-tags">
-          <span class="tag">iOS</span>
-          <span class="tag">ANDROID</span>
-          <span class="tag">WEB</span>
-          <span class="tag on">APPLE HEALTH</span>
-          <span class="tag on">HEALTH CONNECT</span>
-          <span class="tag">OURA · SOON</span>
-          <span class="tag">WHOOP · SOON</span>
-          <span class="tag">FITBIT · SOON</span>
+        <div class="rv">
+          <div class="p-num">02</div>
+          <h3>Nothing published early</h3>
+          <p>A community finding stays hidden until at least 30 people have run the
+          same thing. What didn't work is kept alongside what did.</p>
+        </div>
+        <div class="rv">
+          <div class="p-num">03</div>
+          <h3>Every number carries its source</h3>
+          <p>Apple Health, Health Connect, or you — labelled on every value. Your
+          health data is never sold, and never used for advertising.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- ---------------- BETA ---------------- -->
+  <section class="beta">
+    <div class="wrap">
+      <span class="label">Public beta · 2026</span>
+      <h2>Join the experiment</h2>
+      <p>Free during the beta, for US adults. We're onboarding in waves — write to us
+      and we'll reach out when yours opens.</p>
+      <div class="beta-cta">
+        <a class="btn btn--primary" href="mailto:support@ashgrid.co?subject=Beta%20access">Request access</a>
+      </div>
+      <div class="beta-note">US residents · 18+ · No spam</div>
+      <div class="tags">
+        <span class="tag">iOS</span>
+        <span class="tag">Android</span>
+        <span class="tag on">Apple Health</span>
+        <span class="tag on">Health Connect</span>
+        <span class="tag">Oura · soon</span>
+        <span class="tag">WHOOP · soon</span>
+        <span class="tag">Fitbit · soon</span>
+      </div>
+    </div>
+  </section>
 </main>
 
-<!-- ===================== FOOTER ===================== -->
 <footer>
   <div class="wrap">
-    <div class="foot">
-      <div class="fb">
-        <div class="wm"><span class="mk" data-mark></span>AshGrid</div>
-        <p>A precision instrument for personal wellness observation — quietly alive, honest about what it can and can't know.</p>
+    <p class="dis">AshGrid records personal observations, never medical claims. It is not
+    diagnostic, prescribing, or medical-device software, and it is not a substitute for a
+    clinician. US residents, 18+. If something feels like an emergency, contact your local
+    emergency services.</p>
+    <div class="foot-row">
+      <div class="foot-links">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/consumer-health-data">Health data</a>
+        <a href="/delete-account">Delete account</a>
       </div>
-      <div>
-        <h5>Product</h5>
-        <ul>
-          <li><a href="#how">How it works</a></li>
-          <li><a href="#method">The method</a></li>
-          <li><a href="#community">Community intelligence</a></li>
-          <li><a href="#beta">Join the beta</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>The fine print</h5>
-        <ul>
-          <li><a href="#trust">Trust &amp; privacy</a></li>
-          <li><a href="/terms">Terms of service</a></li>
-          <li><a href="/privacy">Privacy policy</a></li>
-          <!-- MHMDA expects the consumer health data policy to carry its own homepage
-               link, distinct from the general privacy policy. -->
-          <li><a href="/consumer-health-data">Consumer health data policy</a></li>
-          <!-- Google Play requires a discoverable web path for account deletion. -->
-          <li><a href="/delete-account">Delete your account</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="foot-base">
-      <p class="dis">AshGrid records personal observations, never medical claims. It is not diagnostic, prescribing, or medical-device software. US residents, 18+. If something feels like an emergency, contact your local emergency services.</p>
       <span class="cp">© 2026 AshGrid</span>
     </div>
   </div>
@@ -831,96 +345,36 @@ footer{border-top:1px solid var(--hairline);padding:60px 0 40px;position:relativ
 <script>
 (function(){
   "use strict";
-
-  /* ---- Brand mark: the circuit-tree, drawn once, cloned everywhere ---- */
-  var MARK = '<svg viewBox="0 0 100 100" fill="none" aria-hidden="true">'
-    + '<g stroke="var(--t3)" stroke-width="2" stroke-linecap="round">'
-    +   '<path d="M50 92 V48"/>'
-    +   '<path d="M50 62 L30 40"/><path d="M50 62 L70 40"/>'
-    +   '<path d="M50 55 L40 30"/><path d="M50 55 L60 30"/>'
-    +   '<path d="M50 48 L50 22"/>'
-    + '</g>'
-    + '<g fill="var(--accent)">'
-    +   '<circle cx="30" cy="40" r="3.4"/><circle cx="70" cy="40" r="3.4"/>'
-    +   '<circle cx="40" cy="30" r="3.4"/><circle cx="60" cy="30" r="3.4"/>'
-    +   '<circle cx="50" cy="22" r="4"/>'
-    + '</g></svg>';
-  document.querySelectorAll('[data-mark]').forEach(function(el){ el.innerHTML = MARK; });
-
-  /* ---- Theme: persist + system pref ---- */
-  var root = document.documentElement;
-  var saved = null;
+  var root = document.documentElement, saved = null;
   try { saved = localStorage.getItem('ag-theme'); } catch(e){}
-  if(saved){ root.setAttribute('data-theme', saved); }
-  else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches){
+  if (saved) root.setAttribute('data-theme', saved);
+  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches)
     root.setAttribute('data-theme','light');
-  }
+
   document.getElementById('themeBtn').addEventListener('click', function(){
     var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
     try { localStorage.setItem('ag-theme', next); } catch(e){}
   });
 
-  /* ---- Header shadow on scroll ---- */
   var hdr = document.getElementById('hdr');
-  var onScroll = function(){ hdr.classList.toggle('scrolled', window.scrollY > 12); };
-  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+  addEventListener('scroll', function(){
+    hdr.classList.toggle('scrolled', scrollY > 8);
+  }, {passive:true});
 
-  /* ---- Mobile menu ---- */
-  var menuBtn = document.getElementById('menuBtn');
-  var navlinks = document.getElementById('navlinks');
-  menuBtn.addEventListener('click', function(){
-    var open = navlinks.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', open ? 'true':'false');
-  });
-  navlinks.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ navlinks.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); });
-  });
-
-  /* ---- Reveal on scroll + trigger count-ups / bars ---- */
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function countUp(el){
-    var target = parseFloat(el.getAttribute('data-count'));
-    if(reduce){ el.textContent = target; return; }
-    var start = performance.now(), dur = 900;
-    function tick(now){
-      var p = Math.min(1, (now - start)/dur);
-      var e = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * e);
-      if(p < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
+  var els = document.querySelectorAll('.rv');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function(el){ el.classList.add('in'); });
+    return;
   }
-  function growBars(scope){
-    scope.querySelectorAll('[data-fill]').forEach(function(f){
-      requestAnimationFrame(function(){ f.style.width = f.getAttribute('data-fill') + '%'; });
-    });
-  }
-
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(en){
-      if(!en.isIntersecting) return;
+      if (!en.isIntersecting) return;
       en.target.classList.add('in');
-      en.target.querySelectorAll('[data-count]').forEach(countUp);
-      growBars(en.target);
       io.unobserve(en.target);
     });
-  }, {threshold:0.18, rootMargin:'0px 0px -8% 0px'});
-  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
-
-  /* ---- Waitlist (client-side only; wire to an endpoint later) ---- */
-  var form = document.getElementById('wlForm');
-  var ok = document.getElementById('wlOk');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var email = document.getElementById('wlEmail');
-    if(!email.value || email.value.indexOf('@') < 1){ email.focus(); email.style.borderColor = 'var(--danger)'; return; }
-    // To collect real signups, POST email.value to your form endpoint or API here.
-    form.style.display = 'none';
-    ok.classList.add('show');
-  });
-
+  }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+  els.forEach(function(el){ io.observe(el); });
 })();
 </script>
 </body>
