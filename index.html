@@ -117,7 +117,6 @@ img,svg{display:block;max-width:100%}
 .mono{font-family:var(--f-mono);letter-spacing:0.02em}
 .num{font-variant-numeric:tabular-nums;letter-spacing:-0.01em}
 .serif{font-family:var(--f-serif)}
-.i{font-style:italic}
 .accent{color:var(--accent)}
 .t2{color:var(--t2)}
 .t3{color:var(--t3)}
@@ -248,10 +247,14 @@ html[data-theme="light"] .tgl .moon{display:block}
 .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:clamp(32px,5vw,72px);align-items:center;position:relative;z-index:2}
 .hero h1{
   font-family:var(--f-serif);font-weight:400;
-  font-size:clamp(44px,6.4vw,80px);line-height:0.98;letter-spacing:-0.015em;
+  font-size:clamp(42px,6.2vw,80px);line-height:0.92;letter-spacing:-0.026em;
   margin:22px 0 0;
 }
-.hero h1 .em{font-style:italic;color:var(--t2)}
+/* One statement, one color. The second clause used to be set italic and dimmed —
+   the serif/italic/fade headline is the single most recognisable tell of a
+   template landing page, and it made the sentence read as decoration rather than
+   as a claim. Emphasis now comes from the line break and the size. */
+.hero h1 .em{display:block}
 .hero .lede{font-size:clamp(16px,1.7vw,19px);color:var(--t2);max-width:34ch;margin:22px 0 0;line-height:1.55}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
 .hero-meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px}
@@ -284,7 +287,7 @@ html[data-theme="light"] .tgl .moon{display:block}
 .figure .sign{font-family:var(--f-serif);font-size:34px;line-height:1;color:var(--accent)}
 .figure .big{font-family:var(--f-body);font-weight:700;font-size:64px;line-height:0.8;letter-spacing:-0.05em;font-variant-numeric:tabular-nums}
 .figure .unit{font-family:var(--f-mono);font-size:15px;color:var(--t2);margin-left:2px}
-.hero-readout .cap{font-family:var(--f-serif);font-style:italic;font-size:16px;color:var(--t2);position:relative;margin-top:2px}
+.hero-readout .cap{font-family:var(--f-serif);font-size:16px;color:var(--t2);position:relative;margin-top:2px}
 
 /* reference bar */
 .refbar{margin-top:18px;position:relative}
@@ -322,10 +325,16 @@ html[data-theme="light"] .tgl .moon{display:block}
  * ============================================================= */
 .sec-head{max-width:60ch}
 .sec-head h2{
-  font-family:var(--f-serif);font-weight:400;font-size:clamp(28px,4vw,46px);
-  line-height:1.05;letter-spacing:-0.01em;margin:18px 0 0;
+  font-family:var(--f-serif);font-weight:400;font-size:clamp(29px,4.2vw,50px);
+  line-height:0.98;letter-spacing:-0.024em;margin:18px 0 0;text-wrap:balance;
 }
-.sec-head h2 .em{font-style:italic;color:var(--t2)}
+.sec-head h2 .em{display:block}
+/* The two headings that sit inside their own grid column rather than a .sec-head. */
+.dh{
+  font-weight:400;font-size:clamp(29px,4.2vw,50px);line-height:0.98;
+  letter-spacing:-0.024em;margin:18px 0 0;text-wrap:balance;
+}
+.dh .em{display:block}
 .sec-head p{color:var(--t2);font-size:17px;margin:18px 0 0;max-width:52ch}
 
 /* ============================================================= *
@@ -365,7 +374,7 @@ html[data-theme="light"] .tgl .moon{display:block}
 .gleg{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;margin-top:20px}
 .gleg .gi{display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:var(--t3)}
 .gleg .gi .sw{width:16px;height:2px;border-radius:2px}
-.gnote{font-family:var(--f-serif);font-style:italic;font-size:16px;color:var(--t2);text-align:center;margin:20px auto 0;max-width:40ch}
+.gnote{font-family:var(--f-serif);font-size:16px;color:var(--t2);text-align:center;margin:20px auto 0;max-width:40ch}
 .gnote .n{font-family:var(--f-mono);font-style:normal;font-size:13px;color:var(--accent);font-variant-numeric:tabular-nums}
 
 /* ============================================================= *
@@ -396,8 +405,7 @@ html[data-theme="light"] .tgl .moon{display:block}
 .beta{position:relative;overflow:hidden}
 .beta .card{padding:clamp(30px,5vw,56px);text-align:center}
 .beta::before{content:"";position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:900px;height:520px;background:var(--glow);pointer-events:none;z-index:0}
-.beta h2{font-family:var(--f-serif);font-weight:400;font-size:clamp(30px,4.4vw,52px);line-height:1.02;letter-spacing:-0.01em;margin:16px auto 0;max-width:20ch}
-.beta h2 .em{font-style:italic;color:var(--t2)}
+.beta h2{font-family:var(--f-serif);font-weight:400;font-size:clamp(31px,4.6vw,56px);line-height:0.96;letter-spacing:-0.026em;margin:16px auto 0;max-width:20ch;text-wrap:balance}
 .beta p{color:var(--t2);font-size:17px;margin:18px auto 0;max-width:48ch}
 .wl{display:flex;gap:10px;max-width:460px;margin:30px auto 0;flex-wrap:wrap}
 .wl input{
@@ -426,7 +434,7 @@ footer{border-top:1px solid var(--hairline);padding:60px 0 40px;position:relativ
 .foot ul a{font-size:14px;color:var(--t2);transition:color .2s}
 .foot ul a:hover{color:var(--t1)}
 .foot-base{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--hairline)}
-.foot-base .dis{font-family:var(--f-serif);font-style:italic;font-size:15px;color:var(--t3);max-width:56ch}
+.foot-base .dis{font-family:var(--f-serif);font-size:15px;color:var(--t3);max-width:56ch}
 .foot-base .cp{font-family:var(--f-mono);font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--t3)}
 
 /* reveal on scroll */
@@ -590,7 +598,7 @@ footer{border-top:1px solid var(--hairline);padding:60px 0 40px;position:relativ
     <div class="two">
       <div class="rv">
         <span class="kicker"><span class="tick"></span>The method</span>
-        <h2 class="serif" id="method-h" style="font-weight:400;font-size:clamp(28px,4vw,46px);line-height:1.05;letter-spacing:-0.01em;margin:18px 0 0">Uncertainty is <span class="i t2">part of the result.</span></h2>
+        <h2 class="serif dh" id="method-h">Uncertainty is <span class="em">part of the result.</span></h2>
         <ul class="flist">
           <li>
             <span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
@@ -686,7 +694,7 @@ footer{border-top:1px solid var(--hairline);padding:60px 0 40px;position:relativ
 
       <div class="rv">
         <span class="kicker"><span class="tick"></span>Community intelligence</span>
-        <h2 class="serif" id="comm-h" style="font-weight:400;font-size:clamp(28px,4vw,46px);line-height:1.05;letter-spacing:-0.01em;margin:18px 0 0">Every run adds to the <span class="i t2">shared record.</span></h2>
+        <h2 class="serif dh" id="comm-h">Every run adds to the <span class="em">shared record.</span></h2>
         <p class="t2" style="font-size:17px;margin:18px 0 0;max-width:50ch">If you choose to contribute a de-identified result, it joins the community evidence — ranked by consistency, sample size, adherence, and provenance.</p>
         <ul class="flist">
           <li>
