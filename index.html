@@ -4,13 +4,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>AshGrid — an open experiment in what actually works</title>
-<meta name="description" content="A decentralized wellness experiment. Thousands of people each testing one thing at a time on themselves, then pooling what they find. Private by default. US beta, adults 18+." />
+<meta name="description" content="A decentralized wellness experiment. People run structured protocols on themselves, record what happens, and pool the results. Measured against your own starting point, built for combinations, and private by default. US beta, adults 18+." />
 <meta name="theme-color" content="#0A0A0B" />
 <link rel="canonical" href="https://ashgrid.co/" />
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="AshGrid — an open experiment in what actually works" />
-<meta property="og:description" content="A decentralized wellness experiment. Thousands of people testing one thing at a time, then pooling what they find." />
+<meta property="og:description" content="People run structured protocols on themselves, record what happens, and pool the results — so what you read comes from people who actually tried it." />
 <meta name="twitter:card" content="summary_large_image" />
 
 <link rel="icon" type="image/png" href="/favicon.png" />
@@ -169,11 +169,26 @@ h1{
  *  PRINCIPLES
  * ============================================================= */
 .principles{padding:clamp(56px,9vw,110px) 0;border-top:1px solid var(--hairline)}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(26px,4vw,52px);margin-top:38px}
-@media(max-width:820px){.grid3{grid-template-columns:1fr;gap:34px}}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(30px,4.5vw,56px);margin-top:38px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr;gap:34px}}
 .p-num{font-family:var(--f-mono);font-size:10px;letter-spacing:0.16em;color:var(--accent)}
-.grid3 h3{font-family:var(--f-body);font-weight:600;font-size:19px;letter-spacing:-0.018em;margin:14px 0 0}
-.grid3 p{color:var(--t2);font-size:15.5px;margin:9px 0 0;line-height:1.58}
+.grid2 h3{font-family:var(--f-body);font-weight:600;font-size:19.5px;letter-spacing:-0.018em;margin:14px 0 0}
+.grid2 p{color:var(--t2);font-size:15.5px;margin:9px 0 0;line-height:1.58;max-width:44ch}
+
+/* A measured strip rather than a claim. Every figure is countable from the catalog. */
+.facts{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(44px,6vw,72px);
+  border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.fact{padding:24px 0 24px 24px;border-left:1px solid var(--hairline)}
+.fact:first-child{padding-left:0;border-left:none}
+.fact .n{display:block;font-size:clamp(26px,3vw,34px);font-weight:600;letter-spacing:-0.03em;
+  font-variant-numeric:tabular-nums;line-height:1}
+.fact .l{display:block;font-family:var(--f-mono);font-size:9.5px;text-transform:uppercase;
+  letter-spacing:0.14em;color:var(--t3);margin-top:10px}
+@media(max-width:640px){
+  .facts{grid-template-columns:1fr}
+  .fact{padding:18px 0;border-left:none;border-top:1px solid var(--hairline)}
+  .fact:first-child{border-top:none}
+}
 
 /* ============================================================= *
  *  BETA
@@ -234,8 +249,9 @@ footer{border-top:1px solid var(--hairline);padding:40px 0 56px}
       <div>
         <span class="label"><span class="tick"></span>US beta · Adults 18+</span>
         <h1>An open experiment in what actually works</h1>
-        <p class="lede">A decentralized wellness experiment. Thousands of people each
-        testing one thing at a time on themselves, then pooling what they find.</p>
+        <p class="lede">A decentralized wellness experiment. People run structured
+        protocols on themselves, record what happens, and pool the results — so what
+        you read comes from people who actually tried it.</p>
         <div class="hero-cta">
           <a class="btn btn--primary" href="mailto:support@ashgrid.co?subject=Beta%20access">Request access</a>
           <a class="btn btn--ghost" href="#principles">What makes it different</a>
@@ -274,27 +290,44 @@ footer{border-top:1px solid var(--hairline);padding:40px 0 56px}
   <!-- ---------------- PRINCIPLES ---------------- -->
   <section class="principles" id="principles">
     <div class="wrap">
-      <h2 class="vh">Principles</h2>
-      <span class="label">Three rules it will not break</span>
-      <div class="grid3">
+      <h2 class="vh">What it does differently</h2>
+      <span class="label">Four things worth knowing</span>
+      <div class="grid2">
         <div class="rv">
           <div class="p-num">01</div>
-          <h3>Private by default</h3>
-          <p>Your runs are yours. Contributing to the shared record is a separate,
-          affirmative choice, and you can withdraw it at any time.</p>
+          <h3>Measured against you</h3>
+          <p>A run starts by recording where you actually are. What you get back is
+          your change from that point, not an average drawn from people who aren't
+          you.</p>
         </div>
         <div class="rv">
           <div class="p-num">02</div>
-          <h3>What didn't work still counts</h3>
-          <p>Runs that went nowhere are kept alongside the ones that worked, instead
-          of quietly disappearing the way they do everywhere else.</p>
+          <h3>Made for combinations</h3>
+          <p>Nobody takes one thing. You can run two or three together as a stack,
+          and the work of separating what helped from what came along for the ride
+          is the part AshGrid is built around.</p>
         </div>
         <div class="rv">
           <div class="p-num">03</div>
-          <h3>Every number carries its source</h3>
-          <p>Apple Health, Health Connect, or you — labelled on every value. Your
-          health data is never sold, and never used for advertising.</p>
+          <h3>Your wearable fills it in</h3>
+          <p>Sleep, HRV and resting heart rate arrive from Apple Health or Health
+          Connect. Read-only, never written back, and every value shows where it
+          came from.</p>
         </div>
+        <div class="rv">
+          <div class="p-num">04</div>
+          <h3>Private by default</h3>
+          <p>Your runs are yours. Adding anything to the shared record is a separate
+          choice you can take back, and your health data is never sold or used for
+          advertising.</p>
+        </div>
+      </div>
+
+      <!-- Counted from the live catalog, rounded so growth cannot make it false. -->
+      <div class="facts rv">
+        <div class="fact"><span class="n">150+</span><span class="l">Protocols in the library</span></div>
+        <div class="fact"><span class="n">15</span><span class="l">Goal areas, sleep to skin</span></div>
+        <div class="fact"><span class="n">2</span><span class="l">Device sources, read-only</span></div>
       </div>
     </div>
   </section>
