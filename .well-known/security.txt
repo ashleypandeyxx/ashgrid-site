@@ -1,4 +1,4 @@
 Contact: mailto:legal@ashgrid.co
-Expires: 2027-06-28T00:00:00.000Z
+Expires: 2027-06-30T00:00:00.000Z
 Preferred-Languages: en
 Canonical: https://ashgrid.co/.well-known/security.txt
