@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Continue in AshGrid</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="referrer" content="no-referrer" />
+<meta name="theme-color" content="#0A0A0B" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* Handoff page for Supabase auth emails.
+ *
+ * Why this exists rather than linking ashgrid:// straight from the email: many mail
+ * clients refuse to render a custom-scheme link at all, and a desktop client cannot
+ * open one. An https link on our own domain always renders, and it means the address
+ * a user inspects in a password-reset email says ashgrid.co rather than a project
+ * subdomain they have never heard of -- which is exactly what a cautious person checks
+ * before clicking, and exactly what phishing training tells them to distrust.
+ *
+ * The page forwards a single-use, short-lived token_hash. It holds no secret, stores
+ * nothing, and calls nothing. noindex + no-referrer so the token never leaks into a
+ * search index or an outbound Referer header.
+ */
+:root{
+  --f-serif:"Instrument Serif",Georgia,serif;
+  --f-body:"Hanken Grotesk",system-ui,-apple-system,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+html[data-theme="dark"]{
+  --bg:#0A0A0B; --card:#101012; --t1:#F4F3F0; --t2:rgba(244,243,240,0.60);
+  --t3:rgba(244,243,240,0.36); --accent:#6FE3AE; --hairline:rgba(244,243,240,0.10);
+  --btn-bg:#F4F3F0; --btn-fg:#0A0A0B; color-scheme:dark;
+}
+html[data-theme="light"]{
+  --bg:#DEDBD2; --card:#F7F5EF; --t1:#16140F; --t2:rgba(22,20,15,0.64);
+  --t3:rgba(22,20,15,0.42); --accent:#0E8F62; --hairline:rgba(22,20,15,0.12);
+  --btn-bg:#16140F; --btn-fg:#F7F5EF; color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;min-height:100svh;display:flex;align-items:center;justify-content:center;
+  background:var(--bg);color:var(--t1);font-family:var(--f-body);padding:24px;
+  -webkit-font-smoothing:antialiased}
+main{max-width:440px;text-align:center}
+.brand{display:inline-flex;align-items:center;gap:10px;margin-bottom:28px}
+.brand img{width:26px;height:26px;border-radius:7px}
+.brand span{font-family:var(--f-serif);font-size:24px;line-height:1}
+h1{font-family:var(--f-body);font-weight:500;font-size:26px;letter-spacing:-0.02em;margin:0}
+p{color:var(--t2);font-size:16px;line-height:1.6;margin:14px 0 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;margin-top:26px;
+  font-family:var(--f-mono);font-size:11.5px;font-weight:500;text-transform:uppercase;
+  letter-spacing:0.11em;background:var(--btn-bg);color:var(--btn-fg);text-decoration:none;
+  border-radius:11px;padding:15px 24px;min-height:48px}
+.note{font-family:var(--f-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--t3);margin-top:24px}
+.err{border:1px solid var(--hairline);background:var(--card);border-radius:14px;
+  padding:18px 20px;margin-top:22px}
+.err p{margin:0;font-size:15px}
+</style>
+</head>
+<body>
+<main>
+  <span class="brand">
+    <img src="/logo-mark.png" alt="" width="26" height="26" />
+    <span>AshGrid</span>
+  </span>
+  <h1 id="title">Opening AshGrid…</h1>
+  <p id="body">If the app doesn't open on its own, tap the button below.</p>
+  <a class="btn" id="go" href="#" hidden>Open AshGrid</a>
+  <div class="err" id="err" hidden>
+    <p id="errmsg"></p>
+  </div>
+  <div class="note">This link works once and expires shortly</div>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var root = document.documentElement, saved = null;
+  try { saved = localStorage.getItem('ag-theme'); } catch(e){}
+  if (saved) root.setAttribute('data-theme', saved);
+  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches)
+    root.setAttribute('data-theme','light');
+
+  var q = new URLSearchParams(location.search);
+  var tokenHash = q.get('token_hash') || '';
+  var type = q.get('type') || '';
+
+  // Only the OTP types Supabase actually issues. An unrecognised value is not
+  // forwarded -- the app should never be handed a type it has no branch for.
+  var ROUTES = {
+    recovery:     'reset-password',
+    signup:       'auth-callback',
+    magiclink:    'auth-callback',
+    invite:       'auth-callback',
+    email_change: 'auth-callback'
+  };
+
+  function fail(message){
+    document.getElementById('title').textContent = 'This link cannot be opened';
+    document.getElementById('body').hidden = true;
+    document.getElementById('errmsg').textContent = message;
+    document.getElementById('err').hidden = false;
+  }
+
+  if (!tokenHash || !ROUTES[type]) {
+    fail('The link is incomplete or has already been used. Request a new one from the app and open the newest email.');
+    return;
+  }
+
+  var target = 'ashgrid://' + ROUTES[type]
+    + '?token_hash=' + encodeURIComponent(tokenHash)
+    + '&type=' + encodeURIComponent(type);
+
+  var go = document.getElementById('go');
+  go.setAttribute('href', target);
+  go.hidden = false;
+
+  // Attempt the handoff immediately. If the app is not installed the scheme simply
+  // does nothing, and the visible button remains as the manual path.
+  location.href = target;
+
+  setTimeout(function(){
+    document.getElementById('title').textContent = 'Open this on your phone';
+    document.getElementById('body').textContent =
+      'AshGrid is a mobile app. Open this email on the phone where AshGrid is installed, or tap below if you are already there.';
+  }, 2500);
+})();
+</script>
+</body>
+</html>
