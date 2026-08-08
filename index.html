@@ -175,21 +175,6 @@ h1{
 .grid2 h3{font-family:var(--f-body);font-weight:600;font-size:19.5px;letter-spacing:-0.018em;margin:14px 0 0}
 .grid2 p{color:var(--t2);font-size:15.5px;margin:9px 0 0;line-height:1.58;max-width:44ch}
 
-/* A measured strip rather than a claim. Every figure is countable from the catalog. */
-.facts{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(44px,6vw,72px);
-  border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
-.fact{padding:24px 0 24px 24px;border-left:1px solid var(--hairline)}
-.fact:first-child{padding-left:0;border-left:none}
-.fact .n{display:block;font-size:clamp(26px,3vw,34px);font-weight:600;letter-spacing:-0.03em;
-  font-variant-numeric:tabular-nums;line-height:1}
-.fact .l{display:block;font-family:var(--f-mono);font-size:9.5px;text-transform:uppercase;
-  letter-spacing:0.14em;color:var(--t3);margin-top:10px}
-@media(max-width:640px){
-  .facts{grid-template-columns:1fr}
-  .fact{padding:18px 0;border-left:none;border-top:1px solid var(--hairline)}
-  .fact:first-child{border-top:none}
-}
-
 /* ============================================================= *
  *  BETA
  * ============================================================= */
@@ -295,38 +280,32 @@ footer{border-top:1px solid var(--hairline);padding:40px 0 56px}
         <div class="rv">
           <div class="p-num">01</div>
           <h3>Measured against you</h3>
-          <p>A run starts by recording where you actually are. What you get back is
-          your change from that point, not an average drawn from people who aren't
-          you.</p>
+          <p>Every run opens by recording where you actually are. What comes back is
+          your change from that point — not an average built from people who aren't
+          you, running protocols you didn't.</p>
         </div>
         <div class="rv">
           <div class="p-num">02</div>
-          <h3>Made for combinations</h3>
-          <p>Nobody takes one thing. You can run two or three together as a stack,
-          and the work of separating what helped from what came along for the ride
-          is the part AshGrid is built around.</p>
+          <h3>Built for combinations</h3>
+          <p>Nobody takes one thing. Run two or three together as a stack, and the
+          hard part — telling what helped from what was along for the ride — is the
+          problem AshGrid is built around.</p>
         </div>
         <div class="rv">
           <div class="p-num">03</div>
-          <h3>Your wearable fills it in</h3>
+          <h3>Your wearable does the recording</h3>
           <p>Sleep, HRV and resting heart rate arrive from Apple Health or Health
-          Connect. Read-only, never written back, and every value shows where it
-          came from.</p>
+          Connect: read-only, never written back, every value carrying its source.
+          About a minute a day is left for you.</p>
         </div>
         <div class="rv">
           <div class="p-num">04</div>
-          <h3>Private by default</h3>
-          <p>Your runs are yours. Adding anything to the shared record is a separate
-          choice you can take back, and your health data is never sold or used for
-          advertising.</p>
+          <h3>Nothing gets overwritten</h3>
+          <p>A correction is a new entry pointing at the old one, results are
+          versioned so a better method never rewrites your history, and your starting
+          snapshot is fixed the moment it's taken. The record stays private unless you
+          choose otherwise, and exports in full whenever you ask.</p>
         </div>
-      </div>
-
-      <!-- Counted from the live catalog, rounded so growth cannot make it false. -->
-      <div class="facts rv">
-        <div class="fact"><span class="n">150+</span><span class="l">Protocols in the library</span></div>
-        <div class="fact"><span class="n">15</span><span class="l">Goal areas, sleep to skin</span></div>
-        <div class="fact"><span class="n">2</span><span class="l">Device sources, read-only</span></div>
       </div>
     </div>
   </section>
@@ -337,7 +316,8 @@ footer{border-top:1px solid var(--hairline);padding:40px 0 56px}
       <span class="label">Public beta · 2026</span>
       <h2>Join the experiment</h2>
       <p>Free during the beta, for US adults. We're onboarding in waves — write to us
-      and we'll reach out when yours opens.</p>
+      and we'll reach out when yours opens. Early runs are the ones that decide what
+      the shared record can answer first.</p>
       <div class="beta-cta">
         <a class="btn btn--primary" href="mailto:support@ashgrid.co?subject=Beta%20access">Request access</a>
       </div>
