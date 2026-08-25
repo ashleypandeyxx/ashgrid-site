@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=/app/">
+<!-- Only for clients without JS. A meta refresh in the open head would race the
+     script below and win sometimes, redirecting WITHOUT the OAuth parameters --
+     which is the exact bug the script exists to avoid. The app cannot run without
+     JS anyway, so losing the query string on this path costs nothing. -->
+<noscript><meta http-equiv="refresh" content="0; url=/app/"></noscript>
 <link rel="canonical" href="https://ashgrid.co/app/">
 <title>AshGrid</title>
 <style>
