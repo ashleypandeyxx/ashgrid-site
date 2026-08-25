@@ -13,7 +13,15 @@
 </style>
 </head>
 <body>
-<script>location.replace('/app/');</script>
+<script>
+// Forward the query string and hash, not just the path. Supabase sends the OAuth
+// callback to window.location.origin -- which is this page, since an origin never
+// includes a path -- carrying ?code= (PKCE) or #access_token=. The app runs with
+// detectSessionInUrl:false and exchanges that code itself in app/_layout.tsx, so a
+// redirect that dropped the parameters silently threw the sign-in away and landed
+// the user back on the login screen with no error.
+location.replace('/app/' + window.location.search + window.location.hash);
+</script>
 <p>Taking you to <a href="/app/">AshGrid</a>&hellip;</p>
 </body>
 </html>
